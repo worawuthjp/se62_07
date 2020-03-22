@@ -76,7 +76,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="../../pages_admin/index.php" class="nav-link">
+          <a href="../../pages_admin/borrow/borrow.php" class="nav-link">
             <i class="nav-icon fas fa-shopping-cart"></i>
             <p>
               การยืม-คืนอุปกรณ์
