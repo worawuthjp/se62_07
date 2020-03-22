@@ -69,7 +69,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="../../pages_admin/index.php" class="nav-link">
+          <a href="../../pages_admin/teacher/teacher.php" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
             <p>
               รายชื่ออาจารย์

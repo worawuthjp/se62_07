@@ -61,14 +61,10 @@
                                 <table class="table table-bordered table-striped" id="example1">
                                     <thead>
                                         <tr>
-                                            <th>เลขครุภัณฑ์ </th>
-                                            <th>ชื่ออุปกรณ์ </th>
-                                            <th>ชื่อผู้ยืม</th>
-                                            <th>วันที่ยืม</th>
-                                            <th>กำหนดวันคืน</th>
-                                            <th>วันที่คืน</th>
-                                            <th>อาจารย์ผู้รับผิดชอบ </th>
-                                            <th>สถานะ</th>
+                                            <th>ชื่ออาจารย์</th>
+                                            <th>e-mail</th>
+                                            <th>จัดการ</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -87,14 +83,9 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>เลขครุภัณฑ์ </th>
-                                            <th>ชื่ออุปกรณ์ </th>
-                                            <th>ชื่อผู้ยืม</th>
-                                            <th>วันที่ยืม</th>
-                                            <th>กำหนดวันคืน</th>
-                                            <th>วันที่คืน</th>
-                                            <th>อาจารย์ผู้รับผิดชอบ </th>
-                                            <th>สถานะ</th>
+                                            <th>ชื่ออาจารย์</th>
+                                            <th>e-mail</th>
+                                            <th>จัดการ</th>
                                         </tr>
                                     </tfoot>
                                 </table>
