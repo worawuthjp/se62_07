@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html>
+<?php session_start();
+?>
 
 <head>
+    <?php include("../../dbConnect.php");
+    $sql_Historyborrow = "SELECT serial_number.name_serial, equipment.name_equipment,user.title,user.fname,user.lname,cart.start_borrow,cart.end_borrow ,log_borrow.date_return,teacher.Ttitle,teacher.Tfname,teacher.Tlname,serial_number.status FROM log_borrow 
+    INNER JOIN serial_number ON serial_number.id_serial = log_borrow.id_serial INNER JOIN cart ON cart.id_cart = log_borrow.id_cart 
+    INNER JOIN user ON user.id_user = cart.id_user INNER JOIN teacher on teacher.id_teacher = cart.id_teacher 
+    INNER JOIN equipment ON equipment.id_equipment =cart.id_equipment";
+    $TableHistory = selectData($sql_Historyborrow)
+    ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>ระบบยืม-คืนอุปกรณ์ </title>
@@ -66,27 +75,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="sorting_1">AC032948234</td>
-                                            <td>บอร์ดAduino</td>
-                                            <td>นาย เอก สมหวัง</td>
-                                            <td>02/08/2562</td>
-                                            <td>18/08/2562</td>
-                                            <td>10/08/2562</td>
-                                            <td>อ.นุชนาฎ สัตยากวี</td>
-                                            <td class="td-actions text-center">คืนแล้ว</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="sorting_1">2AC032948555</td>
-                                            <td>บอร์ดAduino2</td>
-                                            <td>นาย สอง สามสี่</td>
-                                            <td>02/08/2562</td>
-                                            <td>12/08/2562</td>
-                                            <td>09/08/2562</td>
-                                            <td>อ.นุชนาฎ สัตยากวี</td>
-                                            <td class="td-actions text-center">คืนแล้ว</td>
-                                        </tr>
-
+                                        <?php for ($i = 0; $i < $TableHistory[0]['numrow']; $i++) { ?>
+                                            <tr role="row" class="odd">
+                                                <td><?php echo $TableHistory[$i + 1]['name_serial'] ?></td>
+                                                <td><?php echo $TableHistory[$i + 1]['name_equipment'] ?></td>
+                                                <td><?php echo $TableHistory[$i + 1]['title'] ?> <?php echo $TableHistory[$i + 1]['fname'] ?> <?php echo  $TableHistory[$i + 1]['lname'] ?> </td>
+                                                <td><?php echo $TableHistory[$i + 1]['start_borrow'] ?></td>
+                                                <td><?php echo $TableHistory[$i + 1]['end_borrow'] ?></td>
+                                                <td><?php echo $TableHistory[$i + 1]['date_return'] ?></td>
+                                                <td><?php echo $TableHistory[$i + 1]['Ttitle'] ?> <?php echo $TableHistory[$i + 1]['Tfname'] ?> <?php echo  $TableHistory[$i + 1]['Tlname'] ?> </td>
+                                                <td><?php echo $TableHistory[$i + 1]['status'] ?></td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                     <tfoot>
                                         <tr>
