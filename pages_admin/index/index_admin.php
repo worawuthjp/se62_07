@@ -1,7 +1,34 @@
 <!DOCTYPE html>
 <html>
+<?php session_start();
+?>
 
 <head>
+    <?php include("../../dbConnect.php");
+    $sql_TableWaitAccept = "SELECT * FROM `cart`INNER JOIN detail_cart ON cart.id_cart = detail_cart.id_cart
+    INNER JOIN user ON user.id_user = cart.id_user
+    INNER JOIN equipment ON equipment.id_equipment = detail_cart.id_equipment
+    INNER JOIN teacher on teacher.id_teacher = cart.id_teacher
+    WHERE cart.status_accept='รอยืนยัน'AND cart.isDelete !=1 AND equipment.isDelete !=1 AND teacher.isDelete != 1";
+    $TableWaitAccept = selectData($sql_TableWaitAccept);
+
+    $sql_Tableborrow = "SELECT * FROM `serial_number` INNER JOIN equipment on equipment.id_equipment = serial_number.id_equipment
+    INNER JOIN cart ON cart.id_equipment = equipment.id_equipment
+    INNER JOIN user ON user.id_user=cart.id_user
+    INNER JOIN teacher on teacher.id_teacher = cart.id_teacher
+    WHERE serial_number.status NOT LIKE 'ไม่ได้ถูกยืม' AND serial_number.isDelete!=1 AND equipment.isDelete !=1 AND cart.isDelete !=1
+    AND teacher.isDelete !=1";
+    $Tableborrow = selectData($sql_Tableborrow);
+
+    $sql_TableTopBorrow = "SELECT equipment.name_equipment,type_equipment.name_typeEquipment,sum(cart.num_borrow) as totalSum FROM cart 
+    INNER JOIN equipment on equipment.id_equipment = cart.id_equipment 
+    INNER JOIN type_equipment ON type_equipment.id_typeEquipment = equipment.id_typeEquipment
+    WHERE cart.isDelete !=1 & equipment.isDelete!=1
+    GROUP BY  equipment.name_equipment  
+    ORDER BY `totalSum`  DESC LIMIT 7";
+    $TableTopBorrow = selectData($sql_TableTopBorrow);
+    ?>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>ระบบยืม-คืนอุปกรณ์ </title>
@@ -18,6 +45,13 @@
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css.map">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -49,7 +83,11 @@
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>2 อุปกรณ์</h3>
+                                    <?php
+                                    $sql_numRequest = "SELECT COUNT(cart.id_cart) as request FROM `cart` WHERE cart.status_accept ='รอยืนยัน' GROUP BY cart.id_cart";
+                                    $request = selectDataOne($sql_numRequest);
+                                    ?>
+                                    <h3><?php echo $request['request'] ?> อุปกรณ์</h3>
 
                                     <p>จำนวนอุปกรณ์ที่รอตอบรับ</p>
                                 </div>
@@ -64,7 +102,11 @@
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>2 อุปกรณ์</h3>
+                                    <?php
+                                    $sql_numBorrow = "SELECT COUNT(serial_number.id_serial) AS sumborrow FROM `serial_number` WHERE serial_number.status='ยังไม่คืน'";
+                                    $borrow = selectDataOne($sql_numBorrow);
+                                    ?>
+                                    <h3><?php echo $borrow['sumborrow'] ?> อุปกรณ์</h3>
 
                                     <p>จำนวนอุปกรณ์ที่กำลังยืม</p>
                                 </div>
@@ -120,7 +162,7 @@
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-header border-transparent">
-                                <h3 class="card-title">การยืมคืนล่าสุด</h3>
+                                <h3 class="card-title">รายการอุปกรณ์ที่ถูกยืมมากที่สุด</h3>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -134,76 +176,36 @@
                                     <table class="table m-0">
                                         <thead>
                                             <tr>
-                                                <th>Order ID</th>
-                                                <th>Item</th>
-                                                <th>Status</th>
-                                                <th>Popularity</th>
+                                                <th>ชื่ออุปกรณ์</th>
+                                                <th>ชื่อหมวดหมู่</th>
+                                                <th>จำนวนที่เคยยืมทั้งหมด</th>
+                                                <th>status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php for ($i = 0; $i < $TableTopBorrow[0]['numrow']; $i++) {
+                                                if ($i + 1 <= 3) {
+                                            ?>
                                             <tr>
-                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                                <td>Call of Duty IV</td>
-                                                <td><span class="badge badge-success">Shipped</span></td>
+                                                <td><?php echo $TableTopBorrow[$i + 1]['name_equipment'] ?></td>
+                                                <td><?php echo $TableTopBorrow[$i + 1]['name_typeEquipment'] ?></td>
                                                 <td>
-                                                    <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                        90,80,90,-70,61,-83,63</div>
+                                                    <?php echo $TableTopBorrow[$i + 1]['totalSum'] ?>
                                                 </td>
+                                                <td><span class="badge badge-danger">Hot!!</span></td>
                                             </tr>
+                                            <?php } else { ?>
+
                                             <tr>
-                                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                                <td>Samsung Smart TV</td>
-                                                <td><span class="badge badge-warning">Pending</span></td>
+                                                <td><?php echo $TableTopBorrow[$i + 1]['name_equipment'] ?></td>
+                                                <td><?php echo $TableTopBorrow[$i + 1]['name_typeEquipment'] ?></td>
                                                 <td>
-                                                    <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                                        90,80,-90,70,61,-83,68</div>
+                                                    <?php echo $TableTopBorrow[$i + 1]['totalSum'] ?>
                                                 </td>
+                                                <td> </td>
                                             </tr>
-                                            <tr>
-                                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                                <td>iPhone 6 Plus</td>
-                                                <td><span class="badge badge-danger">Delivered</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                        90,-80,90,70,-61,83,63</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                                <td>Samsung Smart TV</td>
-                                                <td><span class="badge badge-info">Processing</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#00c0ef" data-height="20">
-                                                        90,80,-90,70,-61,83,63</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                                <td>Samsung Smart TV</td>
-                                                <td><span class="badge badge-warning">Pending</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                                        90,80,-90,70,61,-83,68</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                                <td>iPhone 6 Plus</td>
-                                                <td><span class="badge badge-danger">Delivered</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#f56954" data-height="20">
-                                                        90,-80,90,70,-61,83,63</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                                <td>Call of Duty IV</td>
-                                                <td><span class="badge badge-success">Shipped</span></td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                        90,80,90,-70,61,-83,63</div>
-                                                </td>
-                                            </tr>
+                                            <?php } ?>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -223,7 +225,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table class="table table-bordered table-striped">
+                                <table class="table table-bordered table-striped" id="example1">
                                     <thead>
                                         <tr>
                                             <th>ชื่ออุปกรณ์</th>
@@ -235,18 +237,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
+                                        <?php for ($i = 0; $i < $TableWaitAccept[0]['numrow']; $i++) { ?>
                                         <tr>
-                                            <td>บอร์ดAduino</td>
-                                            <td>นาย เอก สมหวัง</td>
-                                            <td>02/08/2562</td>
-                                            <td rel="tooltip" title="รายชื่ออุปกรณ์" id='NameEquipment'>1
+                                            <td><?php echo $TableWaitAccept[$i + 1]['name_equipment'] ?></td>
+                                            <td><?php echo $TableWaitAccept[$i + 1]['title'] ?>
+                                                <?php echo $TableWaitAccept[$i + 1]['fname'] ?>
+                                                <?php echo $TableWaitAccept[$i + 1]['lname'] ?>
+                                            </td>
+                                            <td><?php echo $TableWaitAccept[$i + 1]['start_borrow'] ?></td>
+                                            <td>
+                                                <?php echo $TableWaitAccept[$i + 1]['num_borrow'] ?>
                                                 อุปกรณ์
                                             </td>
-                                            <td>อ.นุชนาฎ สัตยากวี</td>
+                                            <td>อ.
+                                                <?php echo $TableWaitAccept[$i + 1]['Tfname'] ?>
+                                                <?php echo $TableWaitAccept[$i + 1]['Tlname'] ?></td>
                                             <td class="td-actions text-center">
-                                                <button type="button" rel="tooltip" title="ยกเลิก"
-                                                    class="btn btn-black btn-link btn-sm">
+                                                <button
+                                                    onclick="accept('<?php echo $TableWaitAccept[$i + 1]['id_cart'] ?>','<?php echo $TableWaitAccept[$i + 1]['num_borrow'] ?>')"
+                                                    type='button' class="btn btn-black btn-link btn-sm">
                                                     <i class="fas fa-check"></i>
                                                 </button>
                                                 <button type="button" rel="tooltip" title="ยกเลิก"
@@ -255,27 +264,7 @@
                                                 </button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <!-- <td class="sorting_1">AC032948555</td> -->
-                                            <td>บอร์ดAduino2</td>
-                                            <td>นาย สอง สามสี่</td>
-                                            <td>02/08/2562</td>
-                                            <td rel="tooltip" title="รายชื่ออุปกรณ์"><a href="">2
-                                                    อุปกรณ์</a>
-                                            </td>
-                                            <td>อ.นุชนาฎ สัตยากวี</td>
-                                            <td class="td-actions text-center">
-                                                <button type="button" rel="tooltip" title="ยกเลิก"
-                                                    class="btn btn-black btn-link btn-sm">
-                                                    <i class="fas fa-check"></i>
-                                                </button>
-                                                <button type="button" rel="tooltip" title="ยกเลิก"
-                                                    class="btn btn-black btn-link btn-sm">
-                                                    <i class="fas fa-times"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-
+                                        <?php } ?>
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -301,7 +290,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table class="table table-bordered table-striped">
+                                <table class="table table-bordered table-striped" id="example3">
                                     <thead>
                                         <tr>
                                             <th>เลขครุภัณฑ์ </th>
@@ -314,25 +303,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php for ($i = 0; $i < $Tableborrow[0]['numrow']; $i++) { ?>
                                         <tr>
-                                            <td class="sorting_1">AC032948234</td>
-                                            <td>บอร์ดAduino</td>
-                                            <td>นาย เอก สมหวัง</td>
-                                            <td>02/08/2562</td>
-                                            <td>18/08/2562</td>
-                                            <td>อ.นุชนาฎ สัตยากวี</td>
-                                            <td class="td-actions text-center">ยังไม่คืน</td>
+                                            <td class="sorting_1"><?php echo $Tableborrow[$i + 1]['name_serial'] ?></td>
+                                            <td><?php echo $Tableborrow[$i + 1]['name_equipment'] ?></td>
+                                            <td><?php echo $Tableborrow[$i + 1]['title'] ?>
+                                                <?php echo $Tableborrow[$i + 1]['fname'] ?>
+                                                <?php echo $Tableborrow[$i + 1]['lname'] ?></td>
+                                            <td><?php echo $Tableborrow[$i + 1]['start_borrow'] ?></td>
+                                            <td><?php echo $Tableborrow[$i + 1]['end_borrow'] ?></td>
+                                            <td>อ.<?php echo $Tableborrow[$i + 1]['Tfname'] ?>
+                                                <?php echo $Tableborrow[$i + 1]['Tlname'] ?></td>
+                                            <td class="td-actions text-center">
+                                                <?php echo $Tableborrow[$i + 1]['status'] ?></td>
                                         </tr>
-                                        <tr>
-                                            <td class="sorting_1">2AC032948555</td>
-                                            <td>บอร์ดAduino2</td>
-                                            <td>นาย สอง สามสี่</td>
-                                            <td>02/08/2562</td>
-                                            <td>12/08/2562</td>
-                                            <td>อ.นุชนาฎ สัตยากวี</td>
-                                            <td class="td-actions text-center">รอมารับของ</td>
-                                        </tr>
-
+                                        <?php } ?>
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -359,7 +344,7 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <?php include("../../../main/footerAdmin.php"); ?>
+        <?php include("../view/footer-bar.php"); ?>
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -393,6 +378,54 @@
             "autoWidth": false,
         });
     });
+    $(function() {
+        $("#example3").DataTable();
+        $('#example4').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+        });
+    });
+
+    function accept(id, num) {
+        swal({
+                title: "คุณแน่ใจที่จะยืนยันคำขอใช่มั้ย?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-success",
+                confirmButtonText: "Accept",
+                closeOnConfirm: false
+            },
+            function() {
+                swal("ยืนยันสำเร็จเรียบร้อยแล้ว", {
+                    icon: "success",
+                    buttons: false
+                });
+                accept_1(id, num);
+                setTimeout(function() {
+                    location.reload();
+                }, 1500);
+            });
+    }
+
+    function accept_1(id1, num1) {
+        alert(id1 + " " + num1);
+        $.ajax({
+            type: "POST",
+            data: {
+                id: id1,
+                num: num1,
+                accept: "accept"
+            },
+            url: "./manage.php",
+            async: false,
+            success: function(result) {}
+        });
+    }
     </script>
 </body>
 
