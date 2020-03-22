@@ -6,11 +6,13 @@
   aside p {
     color: white;
   }
+
   aside .info {
     color: white;
   }
+
 </style>
-<aside class="main-sidebar sidebar-dark-primary elevation-4 " style="background-color: #1a211c" >
+<aside class="main-sidebar sidebar-dark-primary elevation-4 " style="background-color: #1a211c">
   <!-- Brand Logo -->
   <a href="../../pages_admin/index.php" class="brand-link " style="background-color: #006636 ;">
     <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -21,14 +23,15 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="border-color: white">
-      <div class="image">
-        <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2 " alt="User Image">
-      </div>
-
-      <!--Profile-->
-      <div class="info">
-        <a class="d-block" >วรวุฒิ พันธุสิทธิ์เสรี (ผู้ดูแล) </a>
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex " style="border-color: white">
+      <div class=" nav-sidebar flex-column">
+        <div class="image info">
+          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2 " alt="User Image">
+        </div>
+        <!--Profile-->
+        <div class="info">
+          วรวุฒิ พันธุสิทธิ์เสรี (ผู้ดูแล)
+        </div>
       </div>
     </div>
 
