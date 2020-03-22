@@ -1,22 +1,34 @@
-<aside class="main-sidebar sidebar-dark-#fffff elevation-4" style="background-color: #0e5b44; ">
+<style>
+  aside li p {
+    color: white;
+  }
+
+  aside p {
+    color: white;
+  }
+  aside .info {
+    color: white;
+  }
+</style>
+<aside class="main-sidebar sidebar-dark-primary elevation-4 " style="background-color: #1a211c" >
   <!-- Brand Logo -->
-  <a href="../../pages_admin/index.php" class="brand-link">
+  <a href="../../pages_admin/index.php" class="brand-link " style="background-color: #006636 ;">
     <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
          style="opacity: .8">
-    <span class="brand-text font-weight-light ">ระบบยืม-คืนอุปกรณ์</span>
+    <span class="brand-text font-weight-light" style="font-size: 18px">ระบบยืม-คืนอุปกรณ์</span>
   </a>
 
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="border-color: white">
       <div class="image">
-        <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2 " alt="User Image">
       </div>
 
       <!--Profile-->
       <div class="info">
-        <a href="#" class="d-block">วรวุฒิ พันธุสิทธิ์เสรี</a>
+        <a class="d-block" >วรวุฒิ พันธุสิทธิ์เสรี (ผู้ดูแล) </a>
       </div>
     </div>
 
