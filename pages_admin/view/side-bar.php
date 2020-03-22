@@ -42,7 +42,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="../../pages/layout/top-nav.html" class="nav-link">
+              <a href="../equipment/name_equipment.php" class="nav-link">
                 <i class="far nav-icon"></i>
                 <p>รายชื่ออุปกรณ์</p>
               </a>
