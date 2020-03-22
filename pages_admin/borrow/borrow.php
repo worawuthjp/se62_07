@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Contacts</title>
+  <title>การยืม-คืนอุปกรณ์</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,16 +20,26 @@
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="../../plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="../../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
-  <?php include "../view/top-bar.php"?>
+  <?php include "../view/top-bar.php" ?>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <?php include "../view/side-bar.php";?>
+  <?php include "../view/side-bar.php"; ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -47,20 +57,91 @@
           </div>
         </div>
       </div><!-- /.container-fluid -->
+      <!--Modal Form-->
+      <div class="modal fade" id="modal-lg">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">รายการอุปกรณ์ที่ต้องการยืม</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>หมายเลขคำขอ : 6020503887_1</p>
+              <table class=" table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>เลขครุภัณฑ์</th>
+                  <th>ชื่ออุปกรณ์</th>
+                  <th>หมวดหมู่อุปกรณ์</th>
+                  <th>จำนวนอุปกรณ์</th>
+                  <th>ตรวจสอบอุปกรณ์</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>1234</td>
+                  <td>
+                    Arduino
+                  </td>
+                  <td>IOT</td>
+                  <td> 4</td>
+                  <td>
+                    <input type="checkbox" id="checkboxPrimary1" checked>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2222</td>
+                  <td>
+                    Raspberry Pi
+                  </td>
+                  <td>Embedded</td>
+                  <td> 3</td>
+                  <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger"
+                             data-on-color="success"></td>
+                </tr>
+                <tr>
+                  <td>12580</td>
+                  <td>
+                    Monitor
+                  </td>
+                  <td>อุปกรณ์คอม</td>
+                  <td> 1</td>
+                  <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger"
+                             data-on-color="success"></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">ยืนยันการส่งหมอบ</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div> <!--End Modal Form-->
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
         <div class="col-12">
-
           <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">คำขอที่ได้รับการอนุมัติแล้ว</h3>
+            <div class="bg-warning info-box" style="padding: 10px 25px 10px 20px">
+              <span class="info-box-icon"><i class="far fa-check-circle"></i></span>
+              <div class="info-box-content" style="display: block">
+                <span class="info-box-number" style="font-size: 18px">คำขอที่ได้รับการอนุมัติ</span>
+                <span class="progress-description">
+                  รายการจัดเตรียมอุปกรณ์
+                </span>
+              </div>
             </div>
-            <!-- /.card-header -->
+            <!-- /.info-box -->
             <div class="card-body">
-              <table id="requestTable" class="table table-bordered table-striped">
+              <table id="requestTable" class=" table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>เลขที่คำขอ</th>
@@ -72,106 +153,39 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
+                  <td>6020503887_01</td>
+                  <td>
+                    6020503887
                   </td>
-                  <td>Win 95+</td>
+                  <td>วรวุฒิ พันธุสิทธิ์เสรี</td>
                   <td> 4</td>
-                  <td>X</td>
+                  <td><a href="#" class="badge bg-warning" data-toggle="modal" data-target="#modal-lg"
+                         style="font-size: 14px;">
+                      รอมารับของ</a></td>
                 </tr>
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
+                  <td>6020503887_02</td>
+                  <td>
+                    6020503887
                   </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
+                  <td>วรวุฒิ พันธุสิทธิ์เสรี</td>
+                  <td> 3</td>
+                  <td><a href="#" class="badge bg-warning" data-toggle="modal" data-target="#modal-lg"
+                         style="font-size: 14px;">
+                      รอมารับของ</a></td>
                 </tr>
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
+                  <td>6020503887_03</td>
+                  <td>
+                    6020503887
                   </td>
-                  <td>Win 95+</td>
-                  <td>5.5</td>
-                  <td>A</td>
+                  <td>วรวุฒิ พันธุสิทธิ์เสรี</td>
+                  <td> 1</td>
+                  <td><a href="#" class="badge bg-warning" data-toggle="modal" data-target="#modal-lg"
+                         style="font-size: 14px;">
+                      รอมารับของ</a></td>
                 </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 6
-                  </td>
-                  <td>Win 98+</td>
-                  <td>6</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 1.2</td>
-                  <td>OSX.3</td>
-                  <td>125.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 1.3</td>
-                  <td>OSX.3</td>
-                  <td>312.8</td>
-                  <td>A</td>
-                </tr>
-
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 8.0</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 8.5</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.0</td>
-                  <td>Win 95+ / OSX.3+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.2</td>
-                  <td>Win 88+ / OSX.3+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 4.5</td>
-                  <td>Mac OS 8-9</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>NetFront 3.1</td>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>NetFront 3.4</td>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                </tfoot>
+                </tbody>
               </table>
             </div>
             <!-- /.card-body -->
@@ -187,8 +201,19 @@
         <div class="col-12">
 
           <div class="card">
-            <div class="card-header bg-yellow">
-              <h3 class="card-title" >การคืนอุปกรณ์</h3>
+            <div>
+              <div class="info-box bg-success">
+                <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-number" style="font-size: 18px">การคืนอุปกรณ์</span>
+                  <span class="progress-description">
+                  รายการคำขอที่กำลังยืม
+                </span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -199,79 +224,41 @@
                   <th>รหัสผู้ใช้</th>
                   <th>ชื่อผู้ยืม</th>
                   <th>จำนวนอุปกรณ์</th>
-                  <th>การส่งมอบ</th>
+                  <th>ยืนยันการคืน</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
+                  <td>6020500321_01</td>
+                  <td>
+                    6020500321
                   </td>
-                  <td>Win 95+</td>
-                  <td>5.5</td>
-                  <td>A</td>
+                  <td>สนุกดี สดุดี</td>
+                  <td> 5</td>
+                  <td><a href="#" class="badge bg-primary" data-toggle="modal" data-target="#modal-lg"
+                         style="font-size: 14px">กำลังยืม</a></td>
                 </tr>
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 6
+                  <td>6020501302_02</td>
+                  <td>
+                    6020501302
                   </td>
-                  <td>Win 98+</td>
-                  <td>6</td>
-                  <td>A</td>
+                  <td>ธนาทร จันทร์รักงาน</td>
+                  <td> 2</td>
+                  <td><a href="#" class="badge bg-primary" data-toggle="modal" data-target="#modal-lg"
+                         style="font-size: 14px">กำลังยืม</a></td>
                 </tr>
                 <tr>
-                  <td>Webkit</td>
-                  <td>Safari 1.2</td>
-                  <td>OSX.3</td>
-                  <td>125.5</td>
-                  <td>A</td>
+                  <td>6020503887_03</td>
+                  <td>
+                    6020503887
+                  </td>
+                  <td>วรวุฒิ พันธุสิทธิ์เสรี</td>
+                  <td> 3</td>
+                  <td><a href="#" class="badge bg-danger" data-toggle="modal" data-target="#modal-lg"
+                         style="font-size: 14px">เกินกำหนดเวลา</a></td>
                 </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 1.3</td>
-                  <td>OSX.3</td>
-                  <td>312.8</td>
-                  <td>A</td>
-                </tr>
-
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 8.0</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 8.5</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.2</td>
-                  <td>Win 88+ / OSX.3+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 4.5</td>
-                  <td>Mac OS 8-9</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>NetFront 3.1</td>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>C</td>
-                </tr>
-                </tfoot>
+                </tbody>
               </table>
             </div>
             <!-- /.card-body -->
@@ -286,7 +273,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <?php include "../view/footer-bar.php";?>
+  <?php include "../view/footer-bar.php"; ?>
 </div>
 <!-- ./wrapper -->
 
@@ -303,18 +290,27 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<!-- Bootstrap Switch -->
+<script src="../../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- bootstrap color picker -->
+<script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <!-- page script -->
 <script>
   $(function () {
-    $("#requestTable").DataTable({
-      "responsive": true,
-      "autoWidth": false,
+    $('#requestTable')
+      .DataTable({
+        'responsive': true,
+        'autoWidth': false
+      });
+    $('#returnthing')
+      .DataTable({
+        'responsive': true,
+        'autoWidth': false
+      });
+    $("input[data-bootstrap-switch]").each(function(){
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
     });
-    $("#returnthing").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-  });
+  })
 </script>
 </body>
 </html>
