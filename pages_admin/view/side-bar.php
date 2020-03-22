@@ -21,14 +21,15 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="border-color: white">
-      <div class="image">
-        <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2 " alt="User Image">
-      </div>
-
-      <!--Profile-->
-      <div class="info">
-        <a class="d-block">วรวุฒิ พันธุสิทธิ์เสรี (ผู้ดูแล) </a>
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex " style="border-color: white">
+      <div class=" nav-sidebar flex-column">
+        <div class="image info">
+          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2 " alt="User Image">
+        </div>
+        <!--Profile-->
+        <div class="info">
+          วรวุฒิ พันธุสิทธิ์เสรี (ผู้ดูแล)
+        </div>
       </div>
     </div>
 
@@ -76,7 +77,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="../../pages_admin/index.php" class="nav-link">
+          <a href="../../pages_admin/borrow/borrow.php" class="nav-link">
             <i class="nav-icon fas fa-shopping-cart"></i>
             <p>
               การยืม-คืนอุปกรณ์
