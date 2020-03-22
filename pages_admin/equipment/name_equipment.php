@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
+<?php session_start();
+?>
+
 <head>
+  <?php include("../../dbConnect.php");
+  $sqltable = "SELECT equipment.pic , type_equipment.name_typeEquipment , equipment.name_equipment , count(serial_number.name_serial)
+, equipment.e_teacher , equipment.e_user , equipment.e_staff , equipment.detail FROM equipment
+INNER JOIN type_equipment ON equipment.id_typeEquipment = type_equipment.id_typeEquipment
+INNER JOIN serial_number ON serial_number.id_equipment = equipment.id_equipment
+GROUP BY name_equipment";
+  $table = selectData($sqltable);
+  print_r($table);
+  ?>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>ระบบยืม-คืนอุปกรณ์</title>
@@ -36,6 +48,12 @@
   <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- Toastr -->
   <link rel="stylesheet" href="../../plugins/toastr/toastr.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <title>AdminLTE 3 | DataTables</title>
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 </head>
@@ -88,11 +106,11 @@
             <a href="#">
               <div class="small-box bg-success" data-target="#modal-lg" data-toggle="modal">
                 <div class="inner">
-                  <h3>53</h3>
-                  <p>อุปกรณ์ที่กำลังยืม</p>
+                  <h3 align="center">เพิ่มอุปกรณ์</h3>
+                  <p style="color: forestgreen">.</p>
                 </div>
                 <div class="icon">
-                  <i class="ion fa-send"></i>
+                  <i class="ion ion-plus-round"></i>
                 </div>
               </div>
             </a>
@@ -100,284 +118,128 @@
           <!-- ./col -->
 
         </div>
-          <!-- ./col -->
-        </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          <section class="col-lg-7 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
-                </h3>
-                <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li>
-                  </ul>
-                </div>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-                <div class="tab-content p-0">
-                  <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane active" id="revenue-chart"
-                       style="position: relative; height: 300px;">
-                    <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                  </div>
-                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                    <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-                  </div>
-                </div>
-              </div><!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-        </div>
-        <div class="card-body">
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-            dfdfdf
-          </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-primary">
-            Launch Primary Modal
-          </button>
-          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-secondary">
-            Launch Secondary Modal
-          </button>
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info">
-            Launch Info Modal
-          </button>
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">
-            Launch Danger Modal
-          </button>
-          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-warning">
-            Launch Warning Modal
-          </button>
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
-            Launch Success Modal
-          </button>
-          <br/>
-          <br/>
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-sm">
-            Launch Small Modal
-          </button>
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-lg">
-            Launch Large Modal
-          </button>
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-xl">
-            Launch Extra Large Modal
-          </button>
-          <br/>
-          <br/>
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-overlay">
-            Launch Modal with Overlay
-          </button>
-          <div class="text-muted mt-3">
-            Instructions for how to use modals are available on the
-            <a href="http://getbootstrap.com/javascript/#modals">Bootstrap documentation</a>
-          </div>
-        </div>
-        <!-- /.card -->
+        <!-- ./col -->
       </div>
+      <!-- /.row -->
+      <!-- Main row -->
       <section class="content">
         <div class="container-fluid">
-          <div class="row">
-
-          </div>
+          <div class="row"></div>
           <!-- /.col -->
         </div>
+        <section class="content">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">รายชื่ออุปกรณ์</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                      <th>รูปอุปกรณ์</th>
+                      <th>หมวดหมู่อุปกรณ์</th>
+                      <th>ชื่ออุปกรณ์</th>
+                      <th>จำนวนอุปกรณ์</th>
+                      <th>สิทธิ์การยืม</th>
+                      <th>รายละเอียดอื่นๆ</th>
+                      <th>จัดการ</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    for ($i = 0; $i < $table[0]['numrow']; $i++) {
+                      ?>
+                      <tr>
+                        <td><?php echo $table[$i + 1]['pic'] ?></td>
+                        <td><?php echo $table[$i + 1]['name_typeEquipment'] ?></td>
+                        <td><?php echo $table[$i + 1]['name_equipment'] ?></td>
+                        <td><?php echo $table[$i + 1]['count(serial_number.name_serial)'] ?></td>
+                        <td>
+                          <!--check-->
+                          <?php if($table[$i+1]['e_staff'] == 1){ ?>
+                            <a class="btn btn-success btn-square btn-sm active"
+                               data-toggle="tooltip" title="" data-original-title="ผู้ดูแลระบบ">
+                              <b>
+                                A
+                              </b>
+                            </a>
+                          <?php } else { ?>
+                            <a class="btn btn-danger btn-square btn-sm active"
+                               data-toggle="tooltip" title="" data-original-title="ผู้ดูแลระบบ">
+                              <b>
+                                A
+                              </b>
+                            </a>
+                          <?php } ?>
+                          <?php if($table[$i+1]['e_teacher'] == 1){ ?>
+                            <a class="btn btn-success btn-square btn-sm active"
+                               data-toggle="tooltip" title="" data-original-title="ผู้ดูแลระบบ">
+                              <b>
+                                T
+                              </b>
+                            </a>
+                          <?php } else { ?>
+                            <a class="btn btn-danger btn-square btn-sm active"
+                               data-toggle="tooltip" title="" data-original-title="ผู้ดูแลระบบ">
+                              <b>
+                                T
+                              </b>
+                            </a>
+                          <?php } ?>
+                          <?php if($table[$i+1]['e_user'] == 1){ ?>
+                            <a class="btn btn-success btn-square btn-sm active"
+                               data-toggle="tooltip" title="" data-original-title="ผู้ดูแลระบบ">
+                              <b>
+                                U
+                              </b>
+                            </a>
+                          <?php } else { ?>
+                            <a class="btn btn-danger btn-square btn-sm active"
+                               data-toggle="tooltip" title="" data-original-title="ผู้ดูแลระบบ">
+                              <b>
+                                U
+                              </b>
+                            </a>
+                          <?php } ?>
+                        </td>
+                        <td><?php echo $table[$i + 1]['detail'] ?></td>
+
+                        <td class="text-right py-0 align-middle">
+                          <div class="btn-group btn-group-sm">
+                            <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                          </div>
+                        </td>
+                      </tr>
+                    <?php } ?>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                      <th>รูปอุปกรณ์</th>
+                      <th>หมวดหมู่อุปกรณ์</th>
+                      <th>ชื่ออุปกรณ์</th>
+                      <th>จำนวนอุปกรณ์</th>
+                      <th>สิทธิ์การยืม</th>
+                      <th>รายละเอียดอื่นๆ</th>
+                      <th>จัดการ</th>
+                    </tr>
+                    </tfoot>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </section>
+
         <!-- ./row -->
   </div><!-- /.container-fluid -->
-
-  <div class="modal fade" id="modal-default">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Default Modal</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="modal fade" id="modal-overlay">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="overlay d-flex justify-content-center align-items-center">
-          <i class="fas fa-2x fa-sync fa-spin"></i>
-        </div>
-        <div class="modal-header">
-          <h4 class="modal-title">Default Modal</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-
-  <div class="modal fade" id="modal-primary">
-    <div class="modal-dialog">
-      <div class="modal-content bg-primary">
-        <div class="modal-header">
-          <h4 class="modal-title">Primary Modal</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-light">Save changes</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-
-
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-
-  <div class="modal fade" id="modal-info">
-    <div class="modal-dialog">
-      <div class="modal-content bg-info">
-        <div class="modal-header">
-          <h4 class="modal-title">Info Modal</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-light">Save changes</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-
-  <div class="modal fade" id="modal-warning">
-    <div class="modal-dialog">
-      <div class="modal-content bg-warning">
-        <div class="modal-header">
-          <h4 class="modal-title">Warning Modal</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-dark">Save changes</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-
-  <div class="modal fade" id="modal-success">
-    <div class="modal-dialog">
-      <div class="modal-content bg-success">
-        <div class="modal-header">
-          <h4 class="modal-title">Success Modal</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-light">Save changes</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-
-  <div class="modal fade" id="modal-danger">
-    <div class="modal-dialog">
-      <div class="modal-content bg-danger">
-        <div class="modal-header">
-          <h4 class="modal-title">Danger Modal</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-light">Save changes</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-
-  <div class="modal fade" id="modal-sm">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Small Modal</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-
   <div class="modal fade" id="modal-lg">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -387,60 +249,69 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <p>เลขครุภัณฑ์ :</p>
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Quick Example</h3>
+        <div class="modal-body card-body">
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-md-3 col-form-label  text-right">เลขครุภัณฑ์: </label>
+            <div class="col-sm-9">
+              <input type="email" class="form-control" id="inputEmail3" placeholder="กรุณากรอกเลขครุภัณฑ์">
             </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form role="form">
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputFile">File input</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="exampleInputFile">
-                      <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                    </div>
-                    <div class="input-group-append">
-                      <span class="input-group-text" id="">Upload</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-md-3 col-form-label text-right">ชื่ออุปกรณ์: </label>
+            <div class="col-sm-9">
+              <input type="email" class="form-control" id="inputEmail3" placeholder="กรุณากรอกชนิดอุปกรณ์">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-md-3 col-form-label text-right">หมวดหมู่อุปกรณ์*: </label>
+            <div class="col-sm-9">
+              <input type="email" class="form-control" id="inputEmail3" placeholder="กรุณากรอกชนิดอุปกรณ์">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-md-3 col-form-label text-right">จำนวนอุปกรณ์: </label>
+            <div class="col-sm-9">
+              <input type="email" class="form-control" id="inputEmail3" placeholder="กรุณากรอกจำนวนอุปกรณ์">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-md-3 col-form-label text-right">สิทธิ์การยืม: </label>
+            <div class="col-sm-9">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label">อาจารย์</label>
               </div>
-              <!-- /.card-body -->
-
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label">นิสิต</label>
               </div>
-            </form>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label">บุคลากรภายนอก</label>
+              </div>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="exampleInputFile">
+              <label class="custom-file-label" for="exampleInputFile">เพิ่มรูปอุปกรณ์</label>
+            </div>
+            <div class="input-group-append">
+              <span class="input-group-text" id="">Upload</span>
+            </div>
           </div>
         </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="modal-footer justify-content-end">
+          <button type="button" class="btn btn-primary">ยืนยัน</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
         </div>
       </div>
+
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
   </div>
   <!-- /.modal -->
-
   <div class="modal fade" id="modal-xl">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
@@ -489,6 +360,29 @@
 <script type="text/javascript">
   $(document).ready(function () {
     bsCustomFileInput.init();
+  });
+</script>
+<!-- DataTables -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
   });
 </script>
 
@@ -645,7 +539,6 @@
       })
     });
   });
-
 </script>
 </body>
 </html>
