@@ -20,6 +20,7 @@
   --orange: #fd7e14;
   --yellow: #ffc107;
   --green: #28a745;
+  --green2: #006636;
   --teal: #20c997;
   --cyan: #17a2b8;
   --white: #ffffff;
@@ -13558,6 +13559,10 @@ body.text-sm .control-sidebar {
 
 .navbar-green {
   background-color: #28a745;
+}
+
+.navbar-jclor {
+  background-color: #006636;
 }
 
 .navbar-teal {
