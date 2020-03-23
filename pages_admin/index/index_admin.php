@@ -109,7 +109,7 @@
                                     <?php
                                     $sql_numBorrow = "SELECT COUNT(serial_number.id_serial) AS sumborrow FROM `serial_number` WHERE serial_number.status='ยังไม่คืน'";
                                     $borrow = selectDataOne($sql_numBorrow);
-                                    if (is_null($request['request'])) { ?>
+                                    if (is_null($borrow['sumborrow'])) { ?>
                                     <h3>0 อุปกรณ์</h3>
                                     <?php } else { ?>
                                     <h3><?php echo $borrow['sumborrow'] ?> อุปกรณ์</h3>
