@@ -268,7 +268,7 @@
                   <td>วรวุฒิ พันธุสิทธิ์เสรี</td>
                   <td> 4</td>
                   <td>
-                    <div class="btn-group btn-group-toggle col-md-7" data-toggle="modal" data-target="#modal-request">
+                    <div class="btn-group btn-group-toggle col-md-8" data-toggle="modal" data-target="#modal-request">
                       <button type="button" class="btn btn-block btn-warning" style="font-weight: bold;font-size: 14px">
                         รอมารับของ
                       </button>
@@ -283,7 +283,7 @@
                   <td>วรวุฒิ พันธุสิทธิ์เสรี</td>
                   <td> 3</td>
                   <td>
-                    <div class="btn-group btn-group-toggle col-md-7" data-toggle="modal" data-target="#modal-request">
+                    <div class="btn-group btn-group-toggle col-md-8" data-toggle="modal" data-target="#modal-request">
                       <button type="button" class="btn btn-block btn-warning" style="font-weight: bold;font-size: 14px">
                         รอมารับของ
                       </button>
@@ -298,7 +298,7 @@
                   <td>วรวุฒิ พันธุสิทธิ์เสรี</td>
                   <td> 1</td>
                   <td>
-                    <div class="btn-group btn-group-toggle col-md-7" data-toggle="modal" data-target="#modal-request">
+                    <div class="btn-group btn-group-toggle col-md-8" data-toggle="modal" data-target="#modal-request">
                       <button type="button" class="btn btn-block btn-warning" style="font-weight: bold;font-size: 14px">
                         รอมารับของ
                       </button>
@@ -356,7 +356,7 @@
                   <td>สนุกดี สดุดี</td>
                   <td> 5</td>
                   <td>
-                    <div class="btn-group btn-group-toggle col-md-7" data-toggle="modal" data-target="#modal-giveback">
+                    <div class="btn-group btn-group-toggle col-md-8" data-toggle="modal" data-target="#modal-giveback">
                       <button type="button" class="btn btn-block btn-primary" style="font-weight: bold;font-size: 14px">
                         กำลังยืม
                       </button>
@@ -371,7 +371,7 @@
                   <td>ธนาทร จันทร์รักงาน</td>
                   <td> 2</td>
                   <td>
-                    <div class="btn-group btn-group-toggle col-md-7" data-toggle="modal" data-target="#modal-giveback">
+                    <div class="btn-group btn-group-toggle col-md-8" data-toggle="modal" data-target="#modal-giveback">
                       <button type="button" class="btn btn-block btn-primary" style="font-weight: bold;font-size: 14px">
                         กำลังยืม
                       </button>
@@ -386,7 +386,7 @@
                   <td>วรวุฒิ พันธุสิทธิ์เสรี</td>
                   <td> 3</td>
                   <td>
-                    <div class="btn-group btn-group-toggle col-md-7" data-toggle="modal" data-target="#modal-giveback">
+                    <div class="btn-group btn-group-toggle col-md-8" data-toggle="modal" data-target="#modal-giveback">
                       <button type="button" class="btn btn-block btn-danger" style="font-weight: bold;font-size: 14px">
                         เกินกำหนดเวลา
                       </button>

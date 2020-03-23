@@ -172,31 +172,67 @@ if ($username == "" || $password == "") {
 			$idcode = $info[0]["idcode"][0];
 			$typePerson = $info[0]["type-person"][0];
 			$mail = $info[0]["google-mail"][0];
+			$faculty = $info[0]["faculty"][0];
+			$_SESSION['thaiprename'] = $thaiprename;
+			$_SESSION['first-name'] = $firstname;
+			$_SESSION['last-name'] = $thaiplastnamerename;
+			$_SESSION['idcode'] = $idcode;
+			$_SESSION['typePerson'] = $typePerson;
+			$_SESSION['mail'] = $mail;
+			$_SESSION['faculty'] = $faculty;
+			echo $_SESSION['thaiprename'];
 
-			$sqlAddUser = "INSERT INTO user (`id_user`,`title`,`fname`,`lname`,`idKU`,`statusUser`,`email`,`isAdmin`) 
-			VALUES ( NULL,'$thaiprename','$firstname','$lastname','$idcode','$typePerson','$mail','0' )";
+
+			$sqlAddUser = "INSERT INTO user (`id_user`,`title`,`fname`,`lname`,`idKU`,`statusUser`,`email`,faculty,`isAdmin`) 
+			VALUES ( NULL,'$thaiprename','$firstname','$lastname','$idcode','$typePerson','$mail','$faculty','0' )";
 			echo $sqlAddUser;
 			addinsertData($sqlAddUser);
 			if ($getUser['isAdmin'] == 0) {
 				if ($info[0]["type-person"][0] == 1) {
+
 					header("Location: ./SE_Teacher/index.php");
 				} else {
+
 					header("Location: ./SE_User/index.php");
 				}
 			} else {
+
 				header("Location: ./SE_admin/index.php");
 			}
 		} else {
+			$thaiprename = $info[0]["thaiprename"][0];
+			$firstname = $info[0]["first-name"][0];
+			$lastname = $info[0]["last-name"][0];
+			$idcode = $info[0]["idcode"][0];
+			$typePerson = $info[0]["type-person"][0];
+			$mail = $info[0]["google-mail"][0];
+			$faculty = $info[0]["faculty"][0];
+			$_SESSION['thaiprename'] = $thaiprename;
+			$_SESSION['first-name'] = $firstname;
+			$_SESSION['last-name'] = $thaiplastnamerename;
+			$_SESSION['idcode'] = $idcode;
+			$_SESSION['typePerson'] = $typePerson;
+			$_SESSION['mail'] = $mail;
+			$_SESSION['faculty'] = $faculty;
+			echo $firstname;
+
+			if (isset($_SESSION['thaiprename'])) {
+				echo "Have SESSION";
+				echo $_SESSION['thaiprename'];
+			}
 			echo ("้have id");
 			$a = $getUser['isAdmin'];
 			echo ($a);
 			if ($getUser['isAdmin'] == 0) {
 				if ($info[0]["type-person"][0] == 1) {
+
 					header("Location: ./SE_Teacher/index.php");
 				} else {
+
 					header("Location: ./SE_User/index.php");
 				}
 			} else {
+
 				header("Location: ./SE_admin/index.php");
 			}
 		}

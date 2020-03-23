@@ -5,8 +5,8 @@
 
 <head>
     <?php include("../../dbConnect.php");
-    $sql_Historyborrow = "";
-    $TableHistory = selectData($sql_Historyborrow)
+    $sql_Teacher = "SELECT teacher.id_teacher,teacher.Ttitle,teacher.Tfname,teacher.Tlname,teacher.email FROM `teacher` ";
+    $TableTeacher = selectData($sql_Teacher)
     ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,6 +24,12 @@
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css.map">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -68,16 +74,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php for ($i = 0; $i < $TableHistory[0]['numrow']; $i++) { ?>
+                                        <?php for ($i = 0; $i < $TableTeacher[0]['numrow']; $i++) { ?>
                                             <tr role="row" class="odd">
-                                                <td><?php echo $TableHistory[$i + 1]['name_serial'] ?></td>
-                                                <td><?php echo $TableHistory[$i + 1]['name_equipment'] ?></td>
-                                                <td><?php echo $TableHistory[$i + 1]['title'] ?> <?php echo $TableHistory[$i + 1]['fname'] ?> <?php echo  $TableHistory[$i + 1]['lname'] ?> </td>
-                                                <td><?php echo $TableHistory[$i + 1]['start_borrow'] ?></td>
-                                                <td><?php echo $TableHistory[$i + 1]['end_borrow'] ?></td>
-                                                <td><?php echo $TableHistory[$i + 1]['date_return'] ?></td>
-                                                <td><?php echo $TableHistory[$i + 1]['Ttitle'] ?> <?php echo $TableHistory[$i + 1]['Tfname'] ?> <?php echo  $TableHistory[$i + 1]['Tlname'] ?> </td>
-                                                <td><?php echo $TableHistory[$i + 1]['status'] ?></td>
+                                                <td><?php echo $TableTeacher[$i + 1]['Ttitle'] ?> <?php echo $TableTeacher[$i + 1]['Tfname'] ?> <?php echo  $TableTeacher[$i + 1]['Tlname'] ?> </td>
+                                                <td><?php echo $TableTeacher[$i + 1]['email'] ?></td>
+                                                <td style="text-align:center;">
+                                                    <a>
+                                                        <button type="button" class="btn btn-warning  btn-sm" 4 data-toggle="tooltip" title="แก้ไขข้อมูล">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
+                                                    </a>
+                                                    <button type="button" onclick="delfunction('<?php echo $TableTeacher[$i + 1]['id_teacher'] ?>'
+                                                    ,'<?php echo $TableTeacher[$i + 1]['Tfname'] ?>')" class="btn btn-danger btn-sm btndel" data-toggle="tooltip" title="" data-original-title="ลบอาจารย์"><i class="far fa-trash-alt"></i></button>
+                                                </td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -140,3 +149,92 @@
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function() {
+
+        $('.tt').tooltip({
+            trigger: "hover"
+        });
+        $(".btndel").on('click', function() {
+
+        });
+
+
+    });
+    $(document).ready(function() {
+        console.log("ready!");
+        $("#addRoom").on('click', function() {
+            $("#modalAddRoom").modal('show');
+        });
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    // function EditRoom() {
+    //     $("#modalEdit").modal('show');
+    // }
+    $(".EditRoom").click(function() {
+        var rid = $(this).attr('rid');
+        var rnumber = $(this).attr('rnumber');
+        var rent = $(this).attr('rent');
+        var detail = $(this).attr('detail');
+
+        //alert(detail);
+        // alert(rnumber);
+        // alert(startDate);
+        // alert(endDate);
+        $('#e_rid').val(rid);
+        $('#e_rnumber').val(rnumber);
+        $('#e_rent').val(rent);
+        $('#e_detail').val(detail);
+
+        $("#modalEdit").modal();
+    });
+
+    $(".detailRoom").click(function() {
+        var detail = $(this).attr('detail');
+
+        //alert(detail);
+        $('#d_detail').val(detail);
+
+
+        $("#modalDetailRoom").modal();
+    });
+
+    function delfunction(id, num) {
+
+        swal({
+                title: "คุณแน่ใจที่จะยืนยันการลบใช่มั้ย?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-success",
+                confirmButtonText: "Accept",
+                closeOnConfirm: false
+            },
+            function() {
+                swal("ยืนยันสำเร็จเรียบร้อยแล้ว", {
+                    icon: "success",
+                    buttons: false
+                });
+                delfunction_1(id, num);
+                setTimeout(function() {
+                    location.reload();
+                }, 1500);
+            });
+    }
+
+    function delfunction_1(Tid, num1) {
+
+        $.ajax({
+            type: "POST",
+            data: {
+                Tid: Tid,
+                action: "delete"
+            },
+            url: "./manage.php",
+            async: false,
+            success: function(result) {}
+        });
+    }
+</script>
