@@ -25,8 +25,6 @@ if (isset($_POST['accept'])) {
         addinsertData($sqlAddLog);
     }
 }
-<<<<<<< HEAD
-=======
 if (isset($_POST['unaccept'])) {
     $id = $_POST['id'];
     $num = $_POST['num'];
@@ -46,4 +44,3 @@ if (isset($_POST['unaccept'])) {
         VALUES ( NULL,'$idSN', '$id', 'ปฏิเสธ', NULL )";
     addinsertData($sqlAddLog);
 }
->>>>>>> a1229bd349353f82c551d3748c6a532a507b6b73
