@@ -146,6 +146,7 @@
             });
         });
     </script>
+    <?php include "../view/script-import.php";?>
 </body>
 
 </html>
