@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html>
 <?php session_start();
-$thaiprename = ''; //$_SESSION[1]['thaiprename'];
-$firstname = ''; //$_SESSION['first-name'];
-$lastname = ''; //$_SESSION['last-name'];
-$idcode = ''; //$_SESSION['idcode'];
-$typePerson = ''; //$_SESSION['typePerson'];
-$mail = ''; //$_SESSION['mail'];
-$faculty = ''; //$_SESSION['faculty'];
-//echo ("555555555555");
 ?>
 
 <head>
@@ -82,7 +74,7 @@ $faculty = ''; //$_SESSION['faculty'];
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">DataTables</li>
+                                <li class="breadcrumb-item active">ระบบยืม-คืนอุปกรณ์</li>
                             </ol>
                         </div>
                     </div>
@@ -117,7 +109,7 @@ $faculty = ''; //$_SESSION['faculty'];
                                     <?php
                                     $sql_numBorrow = "SELECT COUNT(serial_number.id_serial) AS sumborrow FROM `serial_number` WHERE serial_number.status='ยังไม่คืน'";
                                     $borrow = selectDataOne($sql_numBorrow);
-                                    if (is_null($borrow['sumborrow'])) { ?>
+                                    if (is_null($request['request'])) { ?>
                                     <h3>0 อุปกรณ์</h3>
                                     <?php } else { ?>
                                     <h3><?php echo $borrow['sumborrow'] ?> อุปกรณ์</h3>
@@ -150,24 +142,23 @@ $faculty = ''; //$_SESSION['faculty'];
                                         alt="User profile picture">
                                 </div>
 
-                                <h3 class="profile-username text-center">Admin</h3>
+                                <h3 class="profile-username text-center">User</h3>
 
                                 <p class="text-muted text-center"></p>
 
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
-                                        <b>ชื่อผู้ใช้งาน</b> <a class="float-right"><?php echo $thaiprename ?>
-                                            <?php echo $firstname ?> <?php echo $lastname ?></a>
+                                        <b>ชื่อผู้ใช้งาน</b> <a class="float-right">นาย วรวุฒิ พันธุสิทธิ์เสรี</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>รหัส</b> <a class="float-right"><?php echo $idcode ?></a>
+                                        <b>รหัส</b> <a class="float-right">6020503887</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>คณะ</b> <a class="float-right"><?php echo $faculty ?></a>
+                                        <b>คณะ</b> <a class="float-right">วิศวกรรมศาสคร์</a>
                                     </li>
                                 </ul>
 
-                                <a href="#" class="btn btn-primary btn-block"><b>ดูประวัติการยืม</b></a>
+                                <a href="../history/history.php" class="btn btn-primary btn-block"><b>ดูประวัติการยืม</b></a>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -244,7 +235,6 @@ $faculty = ''; //$_SESSION['faculty'];
                                     <thead>
                                         <tr>
                                             <th>ชื่ออุปกรณ์</th>
-                                            <th>ชื่อผู้ขอยืม</th>
                                             <th>วันที่ยืม</th>
                                             <th>จำนวน</th>
                                             <th>อาจารย์ที่รับผิดชอบ</th>
@@ -255,10 +245,6 @@ $faculty = ''; //$_SESSION['faculty'];
                                         <?php for ($i = 0; $i < $TableWaitAccept[0]['numrow']; $i++) { ?>
                                         <tr>
                                             <td><?php echo $TableWaitAccept[$i + 1]['name_equipment'] ?></td>
-                                            <td><?php echo $TableWaitAccept[$i + 1]['title'] ?>
-                                                <?php echo $TableWaitAccept[$i + 1]['fname'] ?>
-                                                <?php echo $TableWaitAccept[$i + 1]['lname'] ?>
-                                            </td>
                                             <td><?php echo $TableWaitAccept[$i + 1]['start_borrow'] ?></td>
                                             <td>
                                                 <?php echo $TableWaitAccept[$i + 1]['num_borrow'] ?>
@@ -285,7 +271,6 @@ $faculty = ''; //$_SESSION['faculty'];
                                     <tfoot>
                                         <tr>
                                             <th>ชื่ออุปกรณ์</th>
-                                            <th>ชื่อผู้ขอยืม</th>
                                             <th>วันที่ยืม</th>
                                             <th>จำนวน</th>
                                             <th>อาจารย์ที่รับผิดชอบ</th>
@@ -311,7 +296,6 @@ $faculty = ''; //$_SESSION['faculty'];
                                         <tr>
                                             <th>เลขครุภัณฑ์ </th>
                                             <th>ชื่ออุปกรณ์ </th>
-                                            <th>ชื่อผู้ขอยืม</th>
                                             <th>วันที่ยืม</th>
                                             <th>วันที่กำหนดวันคืน</th>
                                             <th>อาจารย์ผู้รับผิดชอบ </th>
@@ -323,9 +307,6 @@ $faculty = ''; //$_SESSION['faculty'];
                                         <tr>
                                             <td class="sorting_1"><?php echo $Tableborrow[$i + 1]['name_serial'] ?></td>
                                             <td><?php echo $Tableborrow[$i + 1]['name_equipment'] ?></td>
-                                            <td><?php echo $Tableborrow[$i + 1]['title'] ?>
-                                                <?php echo $Tableborrow[$i + 1]['fname'] ?>
-                                                <?php echo $Tableborrow[$i + 1]['lname'] ?></td>
                                             <td><?php echo $Tableborrow[$i + 1]['start_borrow'] ?></td>
                                             <td><?php echo $Tableborrow[$i + 1]['end_borrow'] ?></td>
                                             <td>อ.<?php echo $Tableborrow[$i + 1]['Tfname'] ?>
@@ -339,7 +320,6 @@ $faculty = ''; //$_SESSION['faculty'];
                                         <tr>
                                             <th>เลขครุภัณฑ์ </th>
                                             <th>ชื่ออุปกรณ์ </th>
-                                            <th>ชื่อผู้ขอยืม</th>
                                             <th>วันที่ยืม</th>
                                             <th>วันที่กำหนดวันคืน</th>
                                             <th>อาจารย์ผู้รับผิดชอบ </th>
@@ -458,7 +438,7 @@ $faculty = ''; //$_SESSION['faculty'];
                     icon: "success",
                     buttons: false
                 });
-                unaccept_1(id, num);
+                accept_1(id, num);
                 setTimeout(function() {
                     location.reload();
                 }, 1500);
@@ -466,13 +446,13 @@ $faculty = ''; //$_SESSION['faculty'];
     }
 
     function unaccept_1(id1, num1) {
-        alert(id1 + " " + num1 + "ยกเลิก");
+        alert(id1 + " " + num1);
         $.ajax({
             type: "POST",
             data: {
                 id: id1,
                 num: num1,
-                unaccept: "unaccept"
+                accept: "unaccept"
             },
             url: "./manage.php",
             async: false,

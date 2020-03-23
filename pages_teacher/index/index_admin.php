@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html>
 <?php session_start();
-$thaiprename = ''; //$_SESSION[1]['thaiprename'];
-$firstname = ''; //$_SESSION['first-name'];
-$lastname = ''; //$_SESSION['last-name'];
-$idcode = ''; //$_SESSION['idcode'];
-$typePerson = ''; //$_SESSION['typePerson'];
-$mail = ''; //$_SESSION['mail'];
-$faculty = ''; //$_SESSION['faculty'];
-//echo ("555555555555");
 ?>
 
 <head>
@@ -117,7 +109,7 @@ $faculty = ''; //$_SESSION['faculty'];
                                     <?php
                                     $sql_numBorrow = "SELECT COUNT(serial_number.id_serial) AS sumborrow FROM `serial_number` WHERE serial_number.status='ยังไม่คืน'";
                                     $borrow = selectDataOne($sql_numBorrow);
-                                    if (is_null($borrow['sumborrow'])) { ?>
+                                    if (is_null($request['request'])) { ?>
                                     <h3>0 อุปกรณ์</h3>
                                     <?php } else { ?>
                                     <h3><?php echo $borrow['sumborrow'] ?> อุปกรณ์</h3>
@@ -156,14 +148,13 @@ $faculty = ''; //$_SESSION['faculty'];
 
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
-                                        <b>ชื่อผู้ใช้งาน</b> <a class="float-right"><?php echo $thaiprename ?>
-                                            <?php echo $firstname ?> <?php echo $lastname ?></a>
+                                        <b>ชื่อผู้ใช้งาน</b> <a class="float-right">นายภาณุภัสส์ ธนัชญ์สุธาโชติ</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>รหัส</b> <a class="float-right"><?php echo $idcode ?></a>
+                                        <b>รหัส</b> <a class="float-right">6020500381</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>คณะ</b> <a class="float-right"><?php echo $faculty ?></a>
+                                        <b>คณะ</b> <a class="float-right">วิศวกรรมศาสคร์</a>
                                     </li>
                                 </ul>
 
@@ -458,7 +449,7 @@ $faculty = ''; //$_SESSION['faculty'];
                     icon: "success",
                     buttons: false
                 });
-                unaccept_1(id, num);
+                accept_1(id, num);
                 setTimeout(function() {
                     location.reload();
                 }, 1500);
@@ -466,13 +457,13 @@ $faculty = ''; //$_SESSION['faculty'];
     }
 
     function unaccept_1(id1, num1) {
-        alert(id1 + " " + num1 + "ยกเลิก");
+        alert(id1 + " " + num1);
         $.ajax({
             type: "POST",
             data: {
                 id: id1,
                 num: num1,
-                unaccept: "unaccept"
+                accept: "unaccept"
             },
             url: "./manage.php",
             async: false,

@@ -5,7 +5,7 @@ session_start();
 if (isset($_POST['accept'])) {
     $id = $_POST['id'];
     $num = $_POST['num'];
-    $sql_idEquipment = "SELECT cart.id_equipment as id_equipment FROM cart WHERE cart.id_cart=$id";
+    $sql_idEquipment = "SELECT cart.id_equipment as id_equipment FROM cart WHERE cart.id_cart=1";
     $idEquipment = selectDataOne($sql_idEquipment);
     $idEM = $idEquipment['id_equipment'];
 
@@ -24,23 +24,4 @@ if (isset($_POST['accept'])) {
         VALUES ( NULL,'$idSN', '$id', 'ยืนยัน', NULL )";
         addinsertData($sqlAddLog);
     }
-}
-if (isset($_POST['unaccept'])) {
-    $id = $_POST['id'];
-    $num = $_POST['num'];
-    $sql_idEquipment = "SELECT cart.id_equipment as id_equipment FROM cart WHERE cart.id_cart=$id";
-    $idEquipment = selectDataOne($sql_idEquipment);
-    $idEM = $idEquipment['id_equipment'];
-
-    $sql = "SELECT * FROM `serial_number`WHERE status='ไม่ได้ถูกยืม' AND id_status_broken=1 AND isDelete=0 AND id_equipment='$idEM' LIMIT $num";
-    $serialNUM = selectData($sql);
-
-    $sqlUpdateCart = "UPDATE cart SET cart.status_accept='ปฏิเสธ' WHERE cart.id_cart=$id";
-    updateData($sqlUpdateCart);
-
-    $idSN = $serialNUM[1]['id_serial'];
-
-    $sqlAddLog = "INSERT INTO log_borrow (`id_log_borrow`,`id_serial`,`id_cart`,`status`,`date_return`) 
-        VALUES ( NULL,'$idSN', '$id', 'ปฏิเสธ', NULL )";
-    addinsertData($sqlAddLog);
 }
