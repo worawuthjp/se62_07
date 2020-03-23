@@ -28,7 +28,7 @@
         </div>
         <!--Profile-->
         <div class="info">
-          วรวุฒิ พันธุสิทธิ์เสรี (ผู้ดูแล)
+          วรวุฒิ พันธุสิทธิ์เสรี (นิสิต)
         </div>
       </div>
     </div>
@@ -44,51 +44,11 @@
             </p>
           </a>
         </li>
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-cog"></i>
-            <p>
-              จัดการอุปกรณ์
-              <i class="fas fa-angle-left right"></i>
-              <span class="badge badge-info right">2</span>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="../equipment/name_equipment.php" class="nav-link">
-                <i class="far nav-icon"></i>
-                <p>รายชื่ออุปกรณ์</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="../../pages/layout/top-nav-sidebar.html" class="nav-link">
-                <i class="far nav-icon"></i>
-                <p>หมวดหมู่อุปกรณ์</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a href="../../pages_admin/teacher/teacher.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>
-              รายชื่ออาจารย์
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="../../pages_admin/borrow/borrow.php" class="nav-link">
-            <i class="nav-icon fas fa-shopping-cart"></i>
-            <p>
-              การยืม-คืนอุปกรณ์
-            </p>
-          </a>
-        </li>
         <li class="nav-item">
           <a href="../../pages_admin/index.php" class="nav-link">
-            <i class="nav-icon fas fa-user-plus"></i>
+            <i class="nav-icon fas fa-home"></i>
             <p>
-              จัดการผู้ดูแลระบบ
+              ยืมอุปกรณ์
             </p>
           </a>
         </li>
