@@ -74,7 +74,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">DataTables</li>
+                                <li class="breadcrumb-item active">ระบบยืม-คืนอุปกรณ์</li>
                             </ol>
                         </div>
                     </div>
@@ -142,23 +142,23 @@
                                         alt="User profile picture">
                                 </div>
 
-                                <h3 class="profile-username text-center">Admin</h3>
+                                <h3 class="profile-username text-center">User</h3>
 
                                 <p class="text-muted text-center"></p>
 
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
-                                        <b>ชื่อผู้ใช้งาน</b> <a class="float-right">นายภาณุภัสส์ ธนัชญ์สุธาโชติ</a>
+                                        <b>ชื่อผู้ใช้งาน</b> <a class="float-right">นาย วรวุฒิ พันธุสิทธิ์เสรี</a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>รหัส</b> <a class="float-right">6020500381</a>
+                                        <b>รหัส</b> <a class="float-right">6020503887</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>คณะ</b> <a class="float-right">วิศวกรรมศาสคร์</a>
                                     </li>
                                 </ul>
 
-                                <a href="#" class="btn btn-primary btn-block"><b>ดูประวัติการยืม</b></a>
+                                <a href="../history/history.php" class="btn btn-primary btn-block"><b>ดูประวัติการยืม</b></a>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -235,7 +235,6 @@
                                     <thead>
                                         <tr>
                                             <th>ชื่ออุปกรณ์</th>
-                                            <th>ชื่อผู้ขอยืม</th>
                                             <th>วันที่ยืม</th>
                                             <th>จำนวน</th>
                                             <th>อาจารย์ที่รับผิดชอบ</th>
@@ -246,10 +245,6 @@
                                         <?php for ($i = 0; $i < $TableWaitAccept[0]['numrow']; $i++) { ?>
                                         <tr>
                                             <td><?php echo $TableWaitAccept[$i + 1]['name_equipment'] ?></td>
-                                            <td><?php echo $TableWaitAccept[$i + 1]['title'] ?>
-                                                <?php echo $TableWaitAccept[$i + 1]['fname'] ?>
-                                                <?php echo $TableWaitAccept[$i + 1]['lname'] ?>
-                                            </td>
                                             <td><?php echo $TableWaitAccept[$i + 1]['start_borrow'] ?></td>
                                             <td>
                                                 <?php echo $TableWaitAccept[$i + 1]['num_borrow'] ?>
@@ -276,7 +271,6 @@
                                     <tfoot>
                                         <tr>
                                             <th>ชื่ออุปกรณ์</th>
-                                            <th>ชื่อผู้ขอยืม</th>
                                             <th>วันที่ยืม</th>
                                             <th>จำนวน</th>
                                             <th>อาจารย์ที่รับผิดชอบ</th>
@@ -302,7 +296,6 @@
                                         <tr>
                                             <th>เลขครุภัณฑ์ </th>
                                             <th>ชื่ออุปกรณ์ </th>
-                                            <th>ชื่อผู้ขอยืม</th>
                                             <th>วันที่ยืม</th>
                                             <th>วันที่กำหนดวันคืน</th>
                                             <th>อาจารย์ผู้รับผิดชอบ </th>
@@ -314,9 +307,6 @@
                                         <tr>
                                             <td class="sorting_1"><?php echo $Tableborrow[$i + 1]['name_serial'] ?></td>
                                             <td><?php echo $Tableborrow[$i + 1]['name_equipment'] ?></td>
-                                            <td><?php echo $Tableborrow[$i + 1]['title'] ?>
-                                                <?php echo $Tableborrow[$i + 1]['fname'] ?>
-                                                <?php echo $Tableborrow[$i + 1]['lname'] ?></td>
                                             <td><?php echo $Tableborrow[$i + 1]['start_borrow'] ?></td>
                                             <td><?php echo $Tableborrow[$i + 1]['end_borrow'] ?></td>
                                             <td>อ.<?php echo $Tableborrow[$i + 1]['Tfname'] ?>
@@ -330,7 +320,6 @@
                                         <tr>
                                             <th>เลขครุภัณฑ์ </th>
                                             <th>ชื่ออุปกรณ์ </th>
-                                            <th>ชื่อผู้ขอยืม</th>
                                             <th>วันที่ยืม</th>
                                             <th>วันที่กำหนดวันคืน</th>
                                             <th>อาจารย์ผู้รับผิดชอบ </th>

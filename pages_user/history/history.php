@@ -9,7 +9,7 @@
     INNER JOIN serial_number ON serial_number.id_serial = log_borrow.id_serial INNER JOIN cart ON cart.id_cart = log_borrow.id_cart 
     INNER JOIN user ON user.id_user = cart.id_user INNER JOIN teacher on teacher.id_teacher = cart.id_teacher 
     INNER JOIN equipment ON equipment.id_equipment =cart.id_equipment";
-    $TableHistory = selectData($sql_Historyborrow)
+    $TableHistory = selectData($sql_Historyborrow);
     ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,7 +66,6 @@
                                         <tr>
                                             <th>เลขครุภัณฑ์ </th>
                                             <th>ชื่ออุปกรณ์ </th>
-                                            <th>ชื่อผู้ยืม</th>
                                             <th>วันที่ยืม</th>
                                             <th>กำหนดวันคืน</th>
                                             <th>วันที่คืน</th>
@@ -75,11 +74,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php for ($i = 0; $i < $TableHistory[0]['numrow']; $i++) { ?>
+                                        <?php for ($i = 0; $i < (int)$TableHistory[0]['numrow']; $i++) { ?>
                                             <tr role="row" class="odd">
                                                 <td><?php echo $TableHistory[$i + 1]['name_serial'] ?></td>
                                                 <td><?php echo $TableHistory[$i + 1]['name_equipment'] ?></td>
-                                                <td><?php echo $TableHistory[$i + 1]['title'] ?> <?php echo $TableHistory[$i + 1]['fname'] ?> <?php echo  $TableHistory[$i + 1]['lname'] ?> </td>
                                                 <td><?php echo $TableHistory[$i + 1]['start_borrow'] ?></td>
                                                 <td><?php echo $TableHistory[$i + 1]['end_borrow'] ?></td>
                                                 <td><?php echo $TableHistory[$i + 1]['date_return'] ?></td>
@@ -92,7 +90,6 @@
                                         <tr>
                                             <th>เลขครุภัณฑ์ </th>
                                             <th>ชื่ออุปกรณ์ </th>
-                                            <th>ชื่อผู้ยืม</th>
                                             <th>วันที่ยืม</th>
                                             <th>กำหนดวันคืน</th>
                                             <th>วันที่คืน</th>
