@@ -86,9 +86,13 @@
                                     <?php
                                     $sql_numRequest = "SELECT COUNT(cart.id_cart) as request FROM `cart` WHERE cart.status_accept ='รอยืนยัน' GROUP BY cart.id_cart";
                                     $request = selectDataOne($sql_numRequest);
+                                    //print_r($request);
+                                    if (is_null($request['request'])) {
                                     ?>
+                                    <h3>0 อุปกรณ์</h3>
+                                    <?php } else { ?>
                                     <h3><?php echo $request['request'] ?> อุปกรณ์</h3>
-
+                                    <?php } ?>
                                     <p>จำนวนอุปกรณ์ที่รอตอบรับ</p>
                                 </div>
                                 <div class="icon">
@@ -105,9 +109,11 @@
                                     <?php
                                     $sql_numBorrow = "SELECT COUNT(serial_number.id_serial) AS sumborrow FROM `serial_number` WHERE serial_number.status='ยังไม่คืน'";
                                     $borrow = selectDataOne($sql_numBorrow);
-                                    ?>
+                                    if (is_null($request['request'])) { ?>
+                                    <h3>0 อุปกรณ์</h3>
+                                    <?php } else { ?>
                                     <h3><?php echo $borrow['sumborrow'] ?> อุปกรณ์</h3>
-
+                                    <?php } ?>
                                     <p>จำนวนอุปกรณ์ที่กำลังยืม</p>
                                 </div>
                                 <div class="icon">
@@ -259,6 +265,7 @@
                                                     <i class="fas fa-check"></i>
                                                 </button>
                                                 <button type="button" rel="tooltip" title="ยกเลิก"
+                                                    onclick="unaccept('<?php echo $TableWaitAccept[$i + 1]['id_cart'] ?>','<?php echo $TableWaitAccept[$i + 1]['num_borrow'] ?>')"
                                                     class="btn btn-black btn-link btn-sm">
                                                     <i class="fas fa-times"></i>
                                                 </button>
@@ -420,6 +427,43 @@
                 id: id1,
                 num: num1,
                 accept: "accept"
+            },
+            url: "./manage.php",
+            async: false,
+            success: function(result) {}
+        });
+    }
+
+    function unaccept(id, num) {
+        swal({
+                title: "คุณแน่ใจที่จะปฏิเสธคำขอใช่มั้ย?",
+                text: "",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-success",
+                confirmButtonText: "Accept",
+                closeOnConfirm: false
+            },
+            function() {
+                swal("ยืนยันสำเร็จเรียบร้อยแล้ว", {
+                    icon: "success",
+                    buttons: false
+                });
+                accept_1(id, num);
+                setTimeout(function() {
+                    location.reload();
+                }, 1500);
+            });
+    }
+
+    function unaccept_1(id1, num1) {
+        alert(id1 + " " + num1);
+        $.ajax({
+            type: "POST",
+            data: {
+                id: id1,
+                num: num1,
+                accept: "unaccept"
             },
             url: "./manage.php",
             async: false,
