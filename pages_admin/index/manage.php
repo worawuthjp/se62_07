@@ -1,4 +1,4 @@
-<?php
+g<?php
 require_once("../../dbConnect.php");
 session_start();
 
