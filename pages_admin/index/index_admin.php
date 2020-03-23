@@ -25,7 +25,8 @@ $faculty = ''; //$_SESSION['faculty'];
     INNER JOIN user ON user.id_user=cart.id_user
     INNER JOIN teacher on teacher.id_teacher = cart.id_teacher
     WHERE serial_number.status NOT LIKE 'ไม่ได้ถูกยืม' AND serial_number.isDelete!=1 AND equipment.isDelete !=1 AND cart.isDelete !=1
-    AND teacher.isDelete !=1";
+    AND teacher.isDelete !=1
+    GROUP BY serial_number.id_serial";
     $Tableborrow = selectData($sql_Tableborrow);
 
     $sql_TableTopBorrow = "SELECT equipment.name_equipment,type_equipment.name_typeEquipment,sum(cart.num_borrow) as totalSum FROM cart 
@@ -115,7 +116,7 @@ $faculty = ''; //$_SESSION['faculty'];
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     <?php
-                                    $sql_numBorrow = "SELECT COUNT(serial_number.id_serial) AS sumborrow FROM `serial_number` WHERE serial_number.status='ยังไม่คืน'";
+                                    $sql_numBorrow = "SELECT COUNT(serial_number.id_serial) AS sumborrow FROM `serial_number` WHERE serial_number.status='ยังไม่คืน' || serial_number.status ='รอมารับของ'";
                                     $borrow = selectDataOne($sql_numBorrow);
                                     if (is_null($borrow['sumborrow'])) { ?>
                                     <h3>0 อุปกรณ์</h3>
