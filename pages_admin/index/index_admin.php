@@ -449,7 +449,7 @@
                     icon: "success",
                     buttons: false
                 });
-                accept_1(id, num);
+                unaccept_1(id, num);
                 setTimeout(function() {
                     location.reload();
                 }, 1500);
@@ -457,13 +457,13 @@
     }
 
     function unaccept_1(id1, num1) {
-        alert(id1 + " " + num1);
+        alert(id1 + " " + num1 + "ยกเลิก");
         $.ajax({
             type: "POST",
             data: {
                 id: id1,
                 num: num1,
-                accept: "unaccept"
+                unaccept: "unaccept"
             },
             url: "./manage.php",
             async: false,
