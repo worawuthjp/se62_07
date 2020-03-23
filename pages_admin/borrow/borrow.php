@@ -88,7 +88,13 @@
                   <td>IOT</td>
                   <td> 4</td>
                   <td>
-                    <input type="checkbox" id="checkboxPrimary1" checked>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                      <label class="btn btn-secondary active " id="colorButton1"
+                             style="background-color: green;cursor:pointer;">
+                        <input type="checkbox" name="options" id="option1" autocomplete="off" onchange="activeButton()"
+                               checked> Active
+                      </label>
+                    </div>
                   </td>
                 </tr>
                 <tr>
@@ -98,8 +104,15 @@
                   </td>
                   <td>Embedded</td>
                   <td> 3</td>
-                  <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger"
-                             data-on-color="success"></td>
+                  <td>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                      <label class="btn btn-secondary active " id="colorButton2"
+                             style="background-color: green;cursor:pointer;">
+                        <input type="checkbox" name="options" id="option2" autocomplete="off" onchange="activeButton1()"
+                               checked> Active
+                      </label>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <td>12580</td>
@@ -108,8 +121,15 @@
                   </td>
                   <td>อุปกรณ์คอม</td>
                   <td> 1</td>
-                  <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger"
-                             data-on-color="success"></td>
+                  <td>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                      <label class="btn btn-secondary active " id="colorButton3"
+                             style="background-color: green;cursor:pointer;">
+                        <input type="checkbox" name="options" id="option3" autocomplete="off" onchange="activeButton2()"
+                               checked> Active
+                      </label>
+                    </div>
+                  </td>
                 </tr>
                 </tbody>
               </table>
@@ -159,9 +179,13 @@
                   </td>
                   <td>วรวุฒิ พันธุสิทธิ์เสรี</td>
                   <td> 4</td>
-                  <td><a href="#" class="badge bg-warning" data-toggle="modal" data-target="#modal-lg"
-                         style="font-size: 14px;">
-                      รอมารับของ</a></td>
+                  <td>
+                    <div class="btn-group btn-group-toggle col-md-7" data-toggle="modal" data-target="#modal-lg">
+                      <button type="button" class="btn btn-block btn-warning" style="font-weight: bold;font-size: 14px">
+                        รอมารับของ
+                      </button>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <td>6020503887_02</td>
@@ -170,9 +194,13 @@
                   </td>
                   <td>วรวุฒิ พันธุสิทธิ์เสรี</td>
                   <td> 3</td>
-                  <td><a href="#" class="badge bg-warning" data-toggle="modal" data-target="#modal-lg"
-                         style="font-size: 14px;">
-                      รอมารับของ</a></td>
+                  <td>
+                    <div class="btn-group btn-group-toggle col-md-7" data-toggle="modal" data-target="#modal-lg">
+                      <button type="button" class="btn btn-block btn-warning" style="font-weight: bold;font-size: 14px">
+                        รอมารับของ
+                      </button>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <td>6020503887_03</td>
@@ -181,9 +209,13 @@
                   </td>
                   <td>วรวุฒิ พันธุสิทธิ์เสรี</td>
                   <td> 1</td>
-                  <td><a href="#" class="badge bg-warning" data-toggle="modal" data-target="#modal-lg"
-                         style="font-size: 14px;">
-                      รอมารับของ</a></td>
+                  <td>
+                    <div class="btn-group btn-group-toggle col-md-7" data-toggle="modal" data-target="#modal-lg">
+                      <button type="button" class="btn btn-block btn-warning" style="font-weight: bold;font-size: 14px">
+                        รอมารับของ
+                      </button>
+                    </div>
+                  </td>
                 </tr>
                 </tbody>
               </table>
@@ -235,8 +267,13 @@
                   </td>
                   <td>สนุกดี สดุดี</td>
                   <td> 5</td>
-                  <td><a href="#" class="badge bg-primary" data-toggle="modal" data-target="#modal-lg"
-                         style="font-size: 14px">กำลังยืม</a></td>
+                  <td>
+                    <div class="btn-group btn-group-toggle col-md-7" data-toggle="modal" data-target="#modal-lg">
+                      <button type="button" class="btn btn-block btn-primary" style="font-weight: bold;font-size: 14px">
+                        กำลังยืม
+                      </button>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <td>6020501302_02</td>
@@ -245,8 +282,13 @@
                   </td>
                   <td>ธนาทร จันทร์รักงาน</td>
                   <td> 2</td>
-                  <td><a href="#" class="badge bg-primary" data-toggle="modal" data-target="#modal-lg"
-                         style="font-size: 14px">กำลังยืม</a></td>
+                  <td>
+                    <div class="btn-group btn-group-toggle col-md-7" data-toggle="modal" data-target="#modal-lg">
+                      <button type="button" class="btn btn-block btn-primary" style="font-weight: bold;font-size: 14px">
+                        กำลังยืม
+                      </button>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
                   <td>6020503887_03</td>
@@ -255,8 +297,13 @@
                   </td>
                   <td>วรวุฒิ พันธุสิทธิ์เสรี</td>
                   <td> 3</td>
-                  <td><a href="#" class="badge bg-danger" data-toggle="modal" data-target="#modal-lg"
-                         style="font-size: 14px">เกินกำหนดเวลา</a></td>
+                  <td>
+                    <div class="btn-group btn-group-toggle col-md-7" data-toggle="modal" data-target="#modal-lg">
+                      <button type="button" class="btn btn-block btn-danger" style="font-weight: bold;font-size: 14px">
+                        เกินกำหนดเวลา
+                      </button>
+                    </div>
+                  </td>
                 </tr>
                 </tbody>
               </table>
@@ -301,16 +348,45 @@
       .DataTable({
         'responsive': true,
         'autoWidth': false
-      });
+      })
     $('#returnthing')
       .DataTable({
         'responsive': true,
         'autoWidth': false
-      });
-    $("input[data-bootstrap-switch]").each(function(){
-      $(this).bootstrapSwitch('state', $(this).prop('checked'));
-    });
+      })
   })
+
+  function activeButton() {
+    var checkBox = document.getElementById('option1')
+    var colorBotton = document.getElementById('colorButton1')
+    if (checkBox.checked == true) {
+      colorBotton.style.backgroundColor = 'green'
+    } else {
+      colorBotton.style.backgroundColor = '#4f5154'
+    }
+
+  }
+
+  function activeButton1() {
+    var checkBox = document.getElementById('option2')
+    var colorBotton = document.getElementById('colorButton2')
+    if (checkBox.checked == true) {
+      colorBotton.style.backgroundColor = 'green'
+    } else {
+      colorBotton.style.backgroundColor = '#4f5154'
+    }
+  }
+
+  function activeButton2() {
+    var checkBox = document.getElementById('option3')
+    var colorBotton = document.getElementById('colorButton3')
+    if (checkBox.checked == true) {
+      colorBotton.style.backgroundColor = 'green'
+    } else {
+      colorBotton.style.backgroundColor = '#4f5154'
+    }
+
+  }
 </script>
 </body>
 </html>
