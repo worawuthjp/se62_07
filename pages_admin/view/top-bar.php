@@ -10,7 +10,7 @@
       }
     </style>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="../../index3.php" class="nav-link">Home</a>
+      <a href="../index/index_admin.php" class="nav-link">Home</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
       <a href="#" class="nav-link">Contact</a>

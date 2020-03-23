@@ -9,7 +9,6 @@
 , equipment.e_teacher , equipment.e_user , equipment.e_staff , equipment.detail FROM equipment
 INNER JOIN type_equipment ON equipment.id_typeEquipment = type_equipment.id_typeEquipment
 INNER JOIN serial_number ON serial_number.id_equipment = equipment.id_equipment
-WHERE equipment.isDelete = 0
 GROUP BY name_equipment";
   $table = selectData($sqltable);
 
@@ -387,19 +386,19 @@ GROUP BY name_equipment";
           icon: "success",
           buttons: false
         });
-        delfunction_1(id);
+        delfunction_1(id, num);
         setTimeout(function () {
           location.reload();
         }, 1500);
       });
   }
 
-  function delfunction_1(Eid) {
+  function delfunction_1(Eid, num1) {
     $.ajax({
       type: "POST",
       data: {
         Eid: Eid,
-        delete: "delete"
+        action: "delete"
       },
       url: "./manage.php",
       async: false,
