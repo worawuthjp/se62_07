@@ -196,7 +196,29 @@ GROUP BY name_equipment";
                         <!-- ปุ่มเพิ่ม-ลบ-->
                         <td style="text-align:center;">
                           <a>
-                            <button type="button" class="btn btn-warning  btn-sm" 4 data-toggle="tooltip"
+                            <div class="modal fade" id="modal-default">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">แก้ไขรายละเอียดอุปกรณ์</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p id="test1"></p>
+
+                                  </div>
+                                  <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                  </div>
+                                </div>
+                                <!-- /.modal-content -->
+                              </div>
+                              <!-- /.modal-dialog -->
+                            </div>
+                            <button type="button" class="btn btn-warning btn-sm btndel"  data-toggle="modal" data-target="#modal-default" onclick="editEquipment(<?=($i+1);?>)"
                                     title="แก้ไขข้อมูล">
                               <i class="fas fa-edit"></i>
                             </button>
@@ -404,6 +426,19 @@ GROUP BY name_equipment";
       url: "./manage.php",
       async: false,
       success: function (result) {
+      }
+    });
+  }
+  function editEquipment(x){
+    $.ajax({
+      url: './name_equipment.php',
+      type: 'get', //หรือ post (ค่าเริ่มต้นเป็นแบบ get)
+      data: {
+        id: x
+      },
+      dataType: 'json', //หรือ json หรือ xml
+      success: function(data){
+        $('#test1').val(data.id);
       }
     });
   }
