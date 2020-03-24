@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<?php session_start();
+<?php
+session_start();
 $thaiprename = ''; //$_SESSION[1]['thaiprename'];
 $firstname = ''; //$_SESSION['first-name'];
 $lastname = ''; //$_SESSION['last-name'];
