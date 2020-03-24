@@ -5,7 +5,7 @@
 
 <head>
   <?php include("../../dbConnect.php");
-  $sqltable = "SELECT equipment.id_equipment,equipment.pic , type_equipment.name_typeEquipment , equipment.name_equipment , count(serial_number.name_serial)
+  $sqltable = "SELECT type_equipment.id_typeEquipment,equipment.id_equipment,equipment.pic , type_equipment.name_typeEquipment , equipment.name_equipment , count(serial_number.name_serial)
 , equipment.e_teacher , equipment.e_user , equipment.e_staff , equipment.detail FROM equipment
 INNER JOIN type_equipment ON equipment.id_typeEquipment = type_equipment.id_typeEquipment
 INNER JOIN serial_number ON serial_number.id_equipment = equipment.id_equipment
@@ -46,7 +46,6 @@ GROUP BY name_equipment";
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <?php include "../view/top-bar.php"; ?>
-
   <!-- Main Sidebar Container -->
   <?php include "../view/side-bar.php"; ?>
   <!-- Content Wrapper. Contains page content -->
@@ -202,7 +201,9 @@ GROUP BY name_equipment";
                              e_staff="<?php echo $table[$i + 1]['e_staff'] ?>"
                              e_teacher="<?php echo $table[$i + 1]['e_teacher'] ?>"
                              e_user="<?php echo $table[$i + 1]['e_user'] ?>"
-                             detail=" <?php echo $table[$i + 1]['detail'] ?>">
+                             detail="<?php echo $table[$i + 1]['detail'] ?>"
+                             e_id ="<?php echo $table[$i + 1]['id_equipment'] ?>"
+                             type_id ="<?php echo $table[$i + 1]['id_typeEquipment'] ?>">
                             <button type="button" class="btn btn-warning  btn-sm" 4 data-toggle="modal"
                                     title="แก้ไขข้อมูล" data-target="#modalEdit">
                               <i class="fas fa-edit"></i>
@@ -338,7 +339,7 @@ GROUP BY name_equipment";
 
   <!--โมดัลแก้ไข-->
   <div id="modalEdit" class="modal fade">
-    <form class="modal-dialog modal-lg" method="POST" action='manage.php'>
+    <form class="modal-dialog modal-lg" method="post" action='manage.php'>
       <div class="modal-content">
         <div class="modal-header" style="background-color:#eecc0b">
           <h4 class="modal-title" style="color:white">แก้ไขรายการอุปกรณ์</h4>
@@ -378,9 +379,9 @@ GROUP BY name_equipment";
               <span>สิทธิ์การยืม:</span>
             </div>
             <div class="col-xl-8 col-12">
-              <p><input type="checkbox" name="">  (A)ผู้ดูแลระบบ </input></p>
-              <p><input type="checkbox" name="1Day">  (T)อาจารย์ </input></p>
-              <p><input type="checkbox" name="1Week">  (U)นิสิต </input></p>
+              <p><input type="checkbox" name="adcheck" id="adcheck" >  (A)ผู้ดูแลระบบ </input></p>
+              <p><input type="checkbox" name="tcheck" id="tcheck">  (T)อาจารย์ </input></p>
+              <p><input type="checkbox" name="ucheck" id="ucheck">  (U)นิสิต </input></p>
             </div>
           </div>
 
@@ -394,16 +395,13 @@ GROUP BY name_equipment";
                         placeholder=""></textarea>
             </div>
           </div>
-
-          <input type="hidden" id="e_rid" name="e_rid">
-          <input type="hidden" name="edit">
-
-
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">บันทึก</button>
+          <button type="submit" class="btn btn-success" name="edit">บันทึก</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-        </div>
+          <input type="hidden" name="e_id" id="e_id">
+          <input type="hidden" name="type_id" id="e_type_id">
+        </input>
       </div>
     </form>
   </div>
@@ -521,6 +519,8 @@ GROUP BY name_equipment";
     var e_teacher = $(this).attr('e_teacher');
     var e_user = $(this).attr('e_user');
     var detail = $(this).attr('detail');
+    var e_id = $(this).attr('e_id');
+    var type_id = $(this).attr('type_id');
 
 
     $('#e_pic').val(pic);
@@ -529,11 +529,35 @@ GROUP BY name_equipment";
     $('#e_count').val(count);
     $('#e_staff').val(e_staff);
     $('#e_teacher').val(e_teacher);
-    $('#e_user').val(e_user);
     $('#e_detail').val(detail);
-  });
+    $('#e_id').val(e_id);
+    $('#e_type_id').val(type_id);
 
+
+    var u = document.getElementById('ucheck');
+    var a = document.getElementById('adcheck');
+    var t = document.getElementById('tcheck');
+
+    if(e_user == true){
+      u.checked = true;
+    }
+    else{
+      u.checked = false;
+    }
+    if(e_staff == true){
+      a.checked = true;
+    }
+    else{
+      a.checked = false;
+    }
+    if(e_teacher == true){
+      t.checked = true;
+    }
+    else{
+      t.checked = false;
+    }
+
+  });
 </script>
 </body>
-
 </html>
