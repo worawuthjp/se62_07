@@ -132,12 +132,17 @@
           <!-- Message Start -->
           <div class="media">
             <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-            <div class="media-body">
+            <div class="btn-group btn-group-sm">
               <h3 class="dropdown-item-title">
                 ชื่ออุปกรณ์ :
               </h3>
-              <p class="text-sm">จำนาน :</p>
             </div>
+          </div>
+          <div class="media-body">
+            <p class="text-sm">
+              จำนาน :<a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+              <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+            </p>
           </div>
           <!-- Message End -->
         </a>

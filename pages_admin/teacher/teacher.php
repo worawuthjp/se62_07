@@ -85,7 +85,6 @@
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3></h3>
                                     <h3> +1</h3>
                                     <p>เพิ่มรายชื่ออาจารย์</p>
                                 </div>

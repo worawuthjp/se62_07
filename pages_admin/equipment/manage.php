@@ -1,6 +1,7 @@
 <?php
 require_once('../../dbConnect.php');
 
+
 if (isset($_POST['delete'])) {
   $id = $_POST['Eid'];
   $sql = "UPDATE `equipment` SET `isDelete` = '1' WHERE `equipment`.`id_equipment` = '$id'";

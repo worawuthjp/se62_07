@@ -206,7 +206,11 @@ GROUP BY name_equipment";
                                     </button>
                                   </div>
                                   <div class="modal-body">
-                                    <p id="test1"></p>
+                                    <span><label>ชื่ออุปกรณ์ : </label><input type="text" name="row" id="ro1"></span>
+                                    <?php
+                                    if(isset($_GET['row']))
+                                      echo "ddd";
+                                    ?>
 
                                   </div>
                                   <div class="modal-footer justify-content-between">
@@ -218,7 +222,7 @@ GROUP BY name_equipment";
                               </div>
                               <!-- /.modal-dialog -->
                             </div>
-                            <button type="button" class="btn btn-warning btn-sm btndel"  data-toggle="modal" data-target="#modal-default" onclick="editEquipment(<?=($i+1);?>)"
+                            <button type="button" class="btn btn-warning btn-sm btndel"  data-toggle="modal" data-target="#modal-default" onclick="editEquipment(<?=$i+1;?>)"
                                     title="แก้ไขข้อมูล">
                               <i class="fas fa-edit"></i>
                             </button>
@@ -429,16 +433,15 @@ GROUP BY name_equipment";
       }
     });
   }
-  function editEquipment(x){
+  function editEquipment(row){
     $.ajax({
-      url: './name_equipment.php',
-      type: 'get', //หรือ post (ค่าเริ่มต้นเป็นแบบ get)
+      type: "GET",
       data: {
-        id: x
+        row: row
       },
-      dataType: 'json', //หรือ json หรือ xml
-      success: function(data){
-        $('#test1').val(data.id);
+      url: "./name_equipment.php",
+      async: true,
+      success: function (data) {
       }
     });
   }
