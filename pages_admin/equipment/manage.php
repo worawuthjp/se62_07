@@ -9,6 +9,8 @@ if (isset($_POST['delete'])) {
   $sqlUpdateSerial = "UPDATE serial_number SET serial_number.isDelete=1 WHERE serial_number.id_equipment = $id";
   updateData($sqlUpdateSerial);
 }
+
+
 if (isset($_POST['add'])) {
   $rnumber = $_POST['rnumber'];
   $rent = $_POST['rent'];
