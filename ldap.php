@@ -64,7 +64,7 @@ function user_authen($username, $ldappass, $filter1 = "")
 <?php
 if (isset($_POST['username2'])) {
 	$info = (user_authen($username, $password, $_POST['username'])); // id
-	user_authen("b6020500381", "Phanu24036##", "b6020500381");
+	//user_authen("b6020500381", "Phanu24036##", "b6020500381");
 	if ($info[0]["type-person"][0] == "3") {
 		//นิสิต
 		echo "uid=" . $info[0]["uid"][0] . "</br>";
@@ -181,7 +181,12 @@ if ($username == "" || $password == "") {
 			$_SESSION['mail'] = $mail;
 			$_SESSION['faculty'] = $faculty;
 			echo $_SESSION['thaiprename'];
-
+			echo $_SESSION['first-name'];
+			echo $_SESSION['last-name'];
+			echo $_SESSION['idcode'];
+			echo $_SESSION['typePerson'];
+			echo $_SESSION['mail'];
+			echo $_SESSION['faculty'];
 
 			$sqlAddUser = "INSERT INTO user (`id_user`,`title`,`fname`,`lname`,`idKU`,`statusUser`,`email`,faculty,`isAdmin`) 
 			VALUES ( NULL,'$thaiprename','$firstname','$lastname','$idcode','$typePerson','$mail','$faculty','0' )";
@@ -189,15 +194,14 @@ if ($username == "" || $password == "") {
 			addinsertData($sqlAddUser);
 			if ($getUser['isAdmin'] == 0) {
 				if ($info[0]["type-person"][0] == 1) {
-
-					header("Location: ./SE_Teacher/index.php");
+					header("Location: ./pages_teacher/index.php");
 				} else {
 
-					header("Location: ./SE_User/index.php");
+					header("Location: ./pages_user/index.php");
 				}
 			} else {
 
-				header("Location: ./SE_admin/index.php");
+				header("Location: ./pages_admin/index.php");
 			}
 		} else {
 			$thaiprename = $info[0]["thaiprename"][0];
@@ -209,12 +213,18 @@ if ($username == "" || $password == "") {
 			$faculty = $info[0]["faculty"][0];
 			$_SESSION['thaiprename'] = $thaiprename;
 			$_SESSION['first-name'] = $firstname;
-			$_SESSION['last-name'] = $thaiplastnamerename;
+			$_SESSION['last-name'] = $lastname;
 			$_SESSION['idcode'] = $idcode;
 			$_SESSION['typePerson'] = $typePerson;
 			$_SESSION['mail'] = $mail;
 			$_SESSION['faculty'] = $faculty;
-			echo $firstname;
+			echo $_SESSION['thaiprename'];
+			echo $_SESSION['first-name'];
+			echo $_SESSION['last-name'];
+			echo $_SESSION['idcode'];
+			echo $_SESSION['typePerson'];
+			echo $_SESSION['mail'];
+			echo $_SESSION['faculty'];
 
 			if (isset($_SESSION['thaiprename'])) {
 				echo "Have SESSION";
@@ -226,14 +236,14 @@ if ($username == "" || $password == "") {
 			if ($getUser['isAdmin'] == 0) {
 				if ($info[0]["type-person"][0] == 1) {
 
-					header("Location: ./SE_Teacher/index.php");
+					header("Location:./pages_teacher/index/index_admin.php");
 				} else {
 
-					header("Location: ./SE_User/index.php");
+					header("Location: ./pages_user/index_admin.php");
 				}
 			} else {
 
-				header("Location: ./SE_admin/index.php");
+				header("Location: ./pages_admin/index/index_admin.php");
 			}
 		}
 	}

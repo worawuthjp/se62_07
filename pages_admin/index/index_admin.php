@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
-<?php
-session_start();
-$thaiprename = ''; //$_SESSION[1]['thaiprename'];
-$firstname = ''; //$_SESSION['first-name'];
-$lastname = ''; //$_SESSION['last-name'];
-$idcode = ''; //$_SESSION['idcode'];
-$typePerson = ''; //$_SESSION['typePerson'];
-$mail = ''; //$_SESSION['mail'];
-$faculty = ''; //$_SESSION['faculty'];
-//echo ("555555555555");
+<?php session_start();
+$thaiprename = $_SESSION['thaiprename'];
+$firstname = $_SESSION['first-name'];
+$lastname = $_SESSION['last-name'];
+$idcode = $_SESSION['idcode'];
+$typePerson = $_SESSION['typePerson'];
+$mail =  $_SESSION['mail'];
+$faculty = $_SESSION['faculty'];
+
 ?>
 
 <head>
@@ -21,22 +20,29 @@ $faculty = ''; //$_SESSION['faculty'];
     WHERE cart.status_accept='รอยืนยัน'AND cart.isDelete !=1 AND equipment.isDelete !=1 AND teacher.isDelete != 1";
     $TableWaitAccept = selectData($sql_TableWaitAccept);
 
-    $sql_Tableborrow = "SELECT * FROM `serial_number` INNER JOIN equipment on equipment.id_equipment = serial_number.id_equipment
+    $sql_Tableborrow = "SELECT serial_number.name_serial,equipment.name_equipment,user.title,user.fname,user.lname,cart.start_borrow,cart.end_borrow,teacher.Tfname,teacher.Tlname,serial_number.status FROM `serial_number` INNER JOIN equipment on equipment.id_equipment = serial_number.id_equipment
     INNER JOIN cart ON cart.id_equipment = equipment.id_equipment
     INNER JOIN user ON user.id_user=cart.id_user
     INNER JOIN teacher on teacher.id_teacher = cart.id_teacher
     WHERE serial_number.status NOT LIKE 'ไม่ได้ถูกยืม' AND serial_number.isDelete!=1 AND equipment.isDelete !=1 AND cart.isDelete !=1
     AND teacher.isDelete !=1
-    GROUP BY serial_number.id_serial";
+    GROUP BY serial_number.name_serial,equipment.name_equipment,user.title,user.fname,user.lname,cart.start_borrow,cart.end_borrow,teacher.Tfname,teacher.Tlname,serial_number.status";
     $Tableborrow = selectData($sql_Tableborrow);
 
-    $sql_TableTopBorrow = "SELECT equipment.name_equipment,type_equipment.name_typeEquipment,sum(cart.num_borrow) as totalSum FROM cart 
+    $sql_TableTopBorrow = "SELECT equipment.name_equipment,type_equipment.name_typeEquipment,SUM(cart.num_borrow) as totalSum FROM cart 
     INNER JOIN equipment on equipment.id_equipment = cart.id_equipment 
     INNER JOIN type_equipment ON type_equipment.id_typeEquipment = equipment.id_typeEquipment
     WHERE cart.isDelete !=1 & equipment.isDelete!=1
-    GROUP BY  equipment.name_equipment  
+    GROUP BY  equipment.name_equipment,type_equipment.name_typeEquipment
     ORDER BY `totalSum`  DESC LIMIT 7";
     $TableTopBorrow = selectData($sql_TableTopBorrow);
+    echo ($thaiprename + "  ");
+    echo ($firstname + "  ");
+    echo ($lastname + "  ");
+    echo ($idcode + "  ");
+    echo ($typePerson + "  ");
+    echo ($mail + "  ");
+    echo ($faculty + "  ");
     ?>
 
     <meta charset="utf-8">
@@ -57,6 +63,8 @@ $faculty = ''; //$_SESSION['faculty'];
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css.map">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
@@ -95,7 +103,7 @@ $faculty = ''; //$_SESSION['faculty'];
                                     $sql_numRequest = "SELECT COUNT(cart.id_cart) as request FROM `cart` WHERE cart.status_accept ='รอยืนยัน' GROUP BY cart.id_cart";
                                     $request = selectDataOne($sql_numRequest);
                                     //print_r($request);
-                                    if (is_null($request['request'])){
+                                    if (is_null($request['request'])) {
                                     ?>
                                     <h3>0 อุปกรณ์</h3>
                                     <?php } else { ?>

@@ -2,7 +2,12 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header bg-olive">
-        <h4 class="modal-title">Cart</h4>
+        <h4 class="modal-title">
+          <ion-icon name="cart-outline"
+                    style="font-size: 22px;--ionicon-stroke-width: 50px;margin-top: 1px;">
+          </ion-icon>
+          Cart
+        </h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

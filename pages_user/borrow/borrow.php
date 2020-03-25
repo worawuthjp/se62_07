@@ -52,8 +52,8 @@
 
       <!-- Default box -->
       <div class="card card-solid">
-        <div class="card card-primary">
-          <div class="card-header ">
+        <div class="card ">
+          <div class="card-header " style="background-color: #006636 ;">
             <!-- SEARCH FORM -->
             <?php include "../view/search-component.php";?>
           </div>
@@ -61,8 +61,8 @@
             <!--Row Show-->
             <div class="row d-flex align-items-start">
               <!--Show Available Equipment-->
-              <div class="col-8 col-md-3">
-                <div class="card bg-light">
+              <div class="col-8 col-md-3" >
+                <div class="card bg-light" id="dataShow">
                   <div class="card-header text-muted border-bottom-0">
 
                   </div>
@@ -84,7 +84,73 @@
                   </div>
                   <div class="card-footer">
                     <div class="text-right">
-                      <a href="#" class="btn btn-sm bg-teal">
+                      <a href="#" class="btn btn-sm bg-gradient-green">
+                        <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
+                      </a>
+                      <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i> ส่งคำขอ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8 col-md-3" id="dataShow">
+                <div class="card bg-light">
+                  <div class="card-header text-muted border-bottom-0">
+
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="col-lg-12 text-center">
+                      <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-bordered img-fluid col-7">
+                    </div>
+                    <div class="row">
+                      <div class="col-10">
+                        <br class="mb-1">
+                        <ul class="ml-md-2 mb-0 fa-ul text-muted" >
+                          <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
+                          <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
+                          <li class="m-1"><b>จำนวนคงเหลือ : </b>10 ชิ้น</li>
+                          <li class="m-1"><b>สิทธิ์การยืม : </b>A U T</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="text-right">
+                      <a href="#" class="btn btn-sm bg-gradient-green">
+                        <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
+                      </a>
+                      <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i> ส่งคำขอ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8 col-md-3">
+                <div class="card bg-light">
+                  <div class="card-header text-muted border-bottom-0">
+
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="col-lg-12 text-center">
+                      <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-bordered img-fluid col-7">
+                    </div>
+                    <div class="row">
+                      <div class="col-10">
+                        <br class="mb-1">
+                        <ul class="ml-md-2 mb-0 fa-ul text-muted">
+                          <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
+                          <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
+                          <li class="m-1"><b>จำนวนคงเหลือ : </b>10 ชิ้น</li>
+                          <li class="m-1"><b>สิทธิ์การยืม : </b>A U T</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="text-right">
+                      <a href="#" class="btn btn-sm bg-gradient-green">
                         <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
                       </a>
                       <a href="#" class="btn btn-sm btn-primary">
@@ -117,73 +183,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="text-right">
-                      <a href="#" class="btn btn-sm bg-teal">
-                        <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
-                      </a>
-                      <a href="#" class="btn btn-sm btn-primary">
-                        <i class="fas fa-edit"></i> ส่งคำขอ
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-8 col-md-3">
-                <div class="card bg-light">
-                  <div class="card-header text-muted border-bottom-0">
-
-                  </div>
-                  <div class="card-body pt-0">
-                    <div class="col-lg-12 text-center">
-                      <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-bordered img-fluid col-7">
-                    </div>
-                    <div class="row">
-                      <div class="col-10">
-                        <br class="mb-1">
-                        <ul class="ml-md-2 mb-0 fa-ul text-muted" id="dataShow">
-                          <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
-                          <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
-                          <li class="m-1"><b>จำนวนคงเหลือ : </b>10 ชิ้น</li>
-                          <li class="m-1"><b>สิทธิ์การยืม : </b>A U T</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <div class="text-right">
-                      <a href="#" class="btn btn-sm bg-teal">
-                        <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
-                      </a>
-                      <a href="#" class="btn btn-sm btn-primary">
-                        <i class="fas fa-edit"></i> ส่งคำขอ
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-8 col-md-3">
-                <div class="card bg-light">
-                  <div class="card-header text-muted border-bottom-0">
-
-                  </div>
-                  <div class="card-body pt-0">
-                    <div class="col-lg-12 text-center">
-                      <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-bordered img-fluid col-7">
-                    </div>
-                    <div class="row">
-                      <div class="col-10">
-                        <br class="mb-1">
-                        <ul class="ml-md-2 mb-0 fa-ul text-muted" id="dataShow">
-                          <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
-                          <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
-                          <li class="m-1"><b>จำนวนคงเหลือ : </b>10 ชิ้น</li>
-                          <li class="m-1"><b>สิทธิ์การยืม : </b>A U T</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <div class="text-right">
-                      <a href="#" class="btn btn-sm bg-teal">
+                      <a href="#" class="btn btn-sm bg-gradient-green">
                         <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
                       </a>
                       <a href="#" class="btn btn-sm btn-primary">
@@ -218,7 +218,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="text-right">
-                      <a href="#" class="btn btn-sm bg-teal">
+                      <a href="#" class="btn btn-sm bg-gradient-green">
                         <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
                       </a>
                       <a href="#" class="btn btn-sm btn-primary">
@@ -251,7 +251,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="text-right">
-                      <a href="#" class="btn btn-sm bg-teal">
+                      <a href="#" class="btn btn-sm bg-gradient-green">
                         <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
                       </a>
                       <a href="#" class="btn btn-sm btn-primary">
@@ -284,7 +284,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="text-right">
-                      <a href="#" class="btn btn-sm bg-teal">
+                      <a href="#" class="btn btn-sm bg-gradient-green">
                         <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
                       </a>
                       <a href="#" class="btn btn-sm btn-primary">
@@ -317,7 +317,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="text-right">
-                      <a href="#" class="btn btn-sm bg-teal">
+                      <a href="#" class="btn btn-sm bg-gradient-green">
                         <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
                       </a>
                       <a href="#" class="btn btn-sm btn-primary">
