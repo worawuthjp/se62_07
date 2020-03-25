@@ -5,8 +5,8 @@
 
 <head>
     <?php include("../../dbConnect.php");
-    $sql_Teacher = "SELECT * FROM `teacher` WHERE teacher.isDelete =0";
-    $TableTeacher = selectData($sql_Teacher)
+    $sql_Type = "SELECT type_equipment.id_typeEquipment,type_equipment.name_typeEquipment,coalesce(numE, 0) as numE FROM (SELECT equipment.id_typeEquipment,equipment.name_equipment,COUNT(equipment.id_equipment) AS numE FROM equipment WHERE equipment.isDelete=0 GROUP BY equipment.id_typeEquipment) AS T1 RIGHT JOIN type_equipment ON type_equipment.id_typeEquipment=T1.id_typeEquipment WHERE type_equipment.isDelete=0";
+    $TableType = selectData($sql_Type)
     ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,7 +47,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>รายชื่ออาจารย์</h1>
+                            <h1>หมวดหมู่อุปกรณ์</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -62,18 +62,17 @@
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <?php
-                                    $sql_num = "SELECT COUNT(teacher.id_teacher) as teacher FROM teacher WHERE teacher.isDelete = 0";
+                                    $sql_num = "SELECT COUNT(type_equipment.id_typeEquipment) as numType FROM type_equipment WHERE type_equipment.isDelete = 0";
                                     $numT = selectDataOne($sql_num);
                                     //print_r($request);
-                                    if (is_null($numT['teacher'])) {
+                                    if (is_null($numT['numType'])) {
                                     ?>
-
-                                        <h3>0 คน</h3>
+                                        <h3>0 หมวด</h3>
                                     <?php } else { ?>
                                         <h3> </h3>
-                                        <h3><?php echo $numT['teacher'] ?> คน</h3>
+                                        <h3><?php echo $numT['numType'] ?> หมวด</h3>
                                     <?php } ?>
-                                    <p>จำนวนอาจารย์ในระบบ</p>
+                                    <p>จำนวนหมวดหมู่ทั้งหมด</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
@@ -88,7 +87,7 @@
                                 <div class="inner">
                                     <h3></h3>
                                     <h3> +1</h3>
-                                    <p>เพิ่มรายชื่ออาจารย์</p>
+                                    <p>เพิ่มหมวดหมู่อุปกรณ์</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-stats-bars"></i>
@@ -107,42 +106,43 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">อาจารย์</h3>
+                                <h3 class="card-title">หมวดหมู่อุปกรณ์</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table class="table table-bordered table-striped" id="example1">
                                     <thead>
                                         <tr>
-                                            <th>ชื่ออาจารย์</th>
-                                            <th>e-mail</th>
+                                            <th>หมวดหมู่</th>
+                                            <th>จำนวน</th>
                                             <th>จัดการ</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php for ($i = 0; $i < $TableTeacher[0]['numrow']; $i++) { ?>
+                                        <?php for ($i = 0; $i < $TableType[0]['numrow']; $i++) { ?>
                                             <tr role="row" class="odd">
-                                                <td><?php echo $TableTeacher[$i + 1]['Ttitle'] ?>
-                                                    <?php echo $TableTeacher[$i + 1]['Tfname'] ?>
-                                                    <?php echo  $TableTeacher[$i + 1]['Tlname'] ?> </td>
-                                                <td><?php echo $TableTeacher[$i + 1]['email'] ?></td>
+                                                <td><?php echo $TableType[$i + 1]['name_typeEquipment'] ?></td>
+                                                <td><?php echo $TableType[$i + 1]['numE'] ?></td>
                                                 <td style="text-align:center;">
-                                                    <a href="#" class="EditTeacher" idTeacher="<?php echo $TableTeacher[$i + 1]['id_teacher'] ?>" Ttitle="<?php echo $TableTeacher[$i + 1]['Ttitle'] ?>" Tfname="<?php echo $TableTeacher[$i + 1]['Tfname'] ?>" Tlname="<?php echo $TableTeacher[$i + 1]['Tlname'] ?>" email="<?php echo $TableTeacher[$i + 1]['email'] ?>">
+                                                    <a href="#" class="EditType" id_typeEquipment=<?php echo $TableType[$i + 1]['id_typeEquipment'] ?> name_typeEquipment=<?php echo $TableType[$i + 1]['name_typeEquipment'] ?>>
                                                         <button type="button" class="btn btn-warning  btn-sm" 4 data-toggle="tooltip" title="แก้ไขข้อมูล">
                                                             <i class="fas fa-edit"></i>
                                                         </button>
                                                     </a>
-                                                    <button type="button" onclick="delfunction('<?php echo $TableTeacher[$i + 1]['id_teacher'] ?>'
-                                                    ,'<?php echo $TableTeacher[$i + 1]['Tfname'] ?>')" class="btn btn-danger btn-sm btndel" data-toggle="tooltip" title="" data-original-title="ลบอาจารย์"><i class="far fa-trash-alt"></i></button>
+                                                    <?php if ($TableType[$i + 1]['numE'] == 0) { ?>
+                                                        <button type="button" onclick="delfunction('<?php echo $TableType[$i + 1]['id_typeEquipment'] ?>','<?php echo $TableType[$i + 1]['name_typeEquipment'] ?>')" class="btn btn-danger btn-sm btndel" data-toggle="tooltip" title="" data-original-title="ลบหมวดหมู่"><i class="far fa-trash-alt"></i></button>
+                                                    <?php } else { ?>
+                                                        <button type="button" onclick="delfunction2('<?php echo $TableType[$i + 1]['id_typeEquipment'] ?>','<?php echo $TableType[$i + 1]['name_typeEquipment'] ?>')" class="btn btn-danger btn-sm btndel" data-toggle="tooltip" title="" data-original-title="ลบหมวดหมู่"><i class="far fa-trash-alt"></i></button>
+                                                    <?php } ?>
+
                                                 </td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>ชื่ออาจารย์</th>
-                                            <th>e-mail</th>
+                                            <th>หมวดหมู่</th>
+                                            <th>จำนวน</th>
                                             <th>จัดการ</th>
                                         </tr>
                                     </tfoot>
@@ -174,7 +174,7 @@
             <form class="modal-dialog modal-lg " method="POST" action='manage.php'>
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">เพิ่มรายชื่ออาจารย์</h4>
+                        <h4 class="modal-title">เพิ่มหมวดหมู่อุปกรณ์</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -183,45 +183,13 @@
                         <div class="container">
                             <div class="row mb-4">
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right">
-                                    <span>คำหนำหน้าชื่อ :</span>
-                                </div>
-                                <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                                    <span class="bmd-form-group is-filled">
-                                        <select class="browser-default custom-select" id="e_Ttitle" name="e_Ttitle">
-                                            <option>--&gt;กรุณาเลือก&lt;--&lt; /option&gt; </option>
-                                            <option value="1">นาย
-                                            </option>
-                                            <option value="2">นาง</option>
-                                            <option value="2">นางสาว</option>
-                                        </select></span>
-                                </div>
-                            </div>
-                            <div class="row mb-4">
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right">
-                                    <span>ชื่ออาจารย์ :</span>
+                                    <span>ชื่อหมวดหมู่ :</span>
                                 </div>
                                 <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
                                     <span class="bmd-form-group">
-                                        <input type="text" class="form-control" id="Tfname" name="Tfname" placeholder="กรุณากรอกชื่อ	" maxlength="8"></span>
+                                        <input type="text" class="form-control" id="name_typeEquipment" name="name_typeEquipment" placeholder="กรุณากรอกหมวดหมู่	" maxlength="80"></span>
                                 </div>
                             </div>
-                            <div class="row mb-4">
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right">
-                                    <span>นามสกุล :</span>
-                                </div>
-                                <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                                    <span class="bmd-form-group"><input type="text" class="form-control" id="Tlname" name="Tlname" placeholder="กรุณากรอกนามสกุล	" maxlength="8"></span>
-                                </div>
-                            </div>
-                            <div class="row mb-4">
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right">
-                                    <span>อีเมล :</span>
-                                </div>
-                                <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                                    <span class="bmd-form-group"><input type="text" class="form-control" id="email" name="email" placeholder="กรุณากรอกอีเมล	" maxlength="8"></span>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                     <input type="hidden" name="add">
@@ -241,7 +209,7 @@
             <form class="modal-dialog modal-lg " method="POST" action='manage.php'>
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">แก้ไขรายชื่ออาจารย์</h4>
+                        <h4 class="modal-title">แก้ไขหมวดหมู่อุปกรณ์</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -250,48 +218,17 @@
                         <div class="container">
                             <div class="row mb-4">
                                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right">
-                                    <span>คำหนำหน้าชื่อ :</span>
+                                    <span>ชื่อหมวดหมู่ :</span>
                                 </div>
                                 <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                                    <span class="bmd-form-group is-filled">
-                                        <select class="browser-default custom-select" id="e_Ttitle" name="e_Ttitle" placeholder="กรุณากรอก">
-                                            <option>--&gt;กรุณาเลือก&lt;--&lt; /option&gt; </option>
-                                            <option value="1">นาย
-                                            </option>
-                                            <option value="2">นาง</option>
-                                            <option value="2">นางสาว</option>
-                                        </select></span>
+                                    <span class="bmd-form-group"><input type="text" class="form-control" id="e_name_typeEquipment" name="e_name_typeEquipment" placeholder="กรุณากรอกชื่อ	" maxlength="8"></span>
                                 </div>
                             </div>
-                            <div class="row mb-4">
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right">
-                                    <span>ชื่ออาจารย์ :</span>
-                                </div>
-                                <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                                    <span class="bmd-form-group"><input type="text" class="form-control" id="e_Tfname" name="e_Tfname" placeholder="กรุณากรอกชื่อ	" maxlength="8"></span>
-                                </div>
-                            </div>
-                            <div class="row mb-4">
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right">
-                                    <span>นามสกุล :</span>
-                                </div>
-                                <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                                    <span class="bmd-form-group"><input type="text" class="form-control" id="e_Tlname" name="e_Tlname" placeholder="กรุณากรอกนามสกุล	" maxlength="8"></span>
-                                </div>
-                            </div>
-                            <div class="row mb-4">
-                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right">
-                                    <span>อีเมล :</span>
-                                </div>
-                                <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                                    <span class="bmd-form-group"><input type="text" class="form-control" id="e_email" name="e_email" placeholder="กรุณากรอกอีเมล	" maxlength="8"></span>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
+
                     <input type="hidden" name="edit">
-                    <input type="hidden" name="e_idTeacher" id="e_idTeacher">
+                    <input type="hidden" name="e_id_typeEquipment" id="e_id_typeEquipment">
                     <div class="modal-footer justify-content">
                         <button type="submit" class="btn btn-primary">ยืนยัน</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
@@ -351,23 +288,18 @@
             $("#modalAdd").modal();
         });
     });
-    $(".EditTeacher").click(function() {
+    $(".EditType").click(function() {
 
-        var idTeacher = $(this).attr('idTeacher');
-        var Ttitle = $(this).attr('Ttitle');
-        var Tfname = $(this).attr('Tfname');
-        var Tlname = $(this).attr('Tlname');
-        var email = $(this).attr('email');
-        alert(idTeacher);
+        var id_typeEquipment = $(this).attr('id_typeEquipment');
+        var name_typeEquipment = $(this).attr('name_typeEquipment');
+
+        alert(name_typeEquipment);
         // alert(Ttitle);
         // alert(Tfname);
         // alert(Tlname);
 
-        $('#e_idTeacher').val(idTeacher);
-        $('#e_Ttitle').val(Ttitle);
-        $('#e_Tfname').val(Tfname);
-        $('#e_Tlname').val(Tlname);
-        $('#e_email').val(email);
+        $('#e_id_typeEquipment').val(id_typeEquipment);
+        $('#e_name_typeEquipment').val(name_typeEquipment);
 
         $("#modalEdit").modal();
     });
@@ -376,7 +308,7 @@
 
         swal({
                 title: "คุณต้องการลบ",
-                text: "อาจารย์ " + num + " ใช่ไหม",
+                text: "หมวดหมู่ " + num + " ใช่ไหม",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-success",
@@ -407,5 +339,16 @@
             async: false,
             success: function(result) {}
         });
+    }
+
+    function delfunction2(id, Ename) {
+
+        swal({
+            title: "คุณไม่สามารถทำรายการได้",
+            text: "เนื่องจากหมวดหมู่ " + Ename + " มีอุปกรณ์อยู่",
+            icon: "error",
+            confirmButtonClass: "btn-danger",
+            dangerMode: true,
+        })
     }
 </script>
