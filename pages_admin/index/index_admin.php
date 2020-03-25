@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html>
-<?php session_start();
-$thaiprename = $_SESSION[1]['thaiprename'];
-$firstname = $_SESSION['first-name'];
-$lastname = $_SESSION['last-name'];
-$idcode = $_SESSION['idcode'];
-$typePerson = $_SESSION['typePerson'];
-$mail =  $_SESSION['mail'];
-$faculty = $_SESSION['faculty'];
-echo ($thaiprename + "  ");
-echo ($firstname + "  ");
-echo ($lastname + "  ");
-echo ($idcode + "  ");
-echo ($typePerson + "  ");
-echo ($mail + "  ");
-echo ($faculty + "  ");
-
-
+<?php
+session_start();
+$thaiprename = ''; //$_SESSION[1]['thaiprename'];
+$firstname = ''; //$_SESSION['first-name'];
+$lastname = ''; //$_SESSION['last-name'];
+$idcode = ''; //$_SESSION['idcode'];
+$typePerson = ''; //$_SESSION['typePerson'];
+$mail = ''; //$_SESSION['mail'];
+$faculty = ''; //$_SESSION['faculty'];
+//echo ("555555555555");
 ?>
 
 <head>
@@ -64,8 +57,6 @@ echo ($faculty + "  ");
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css.map">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>

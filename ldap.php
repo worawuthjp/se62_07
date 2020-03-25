@@ -175,7 +175,7 @@ if ($username == "" || $password == "") {
 			$faculty = $info[0]["faculty"][0];
 			$_SESSION['thaiprename'] = $thaiprename;
 			$_SESSION['first-name'] = $firstname;
-			$_SESSION['last-name'] = $thaiplastnamerename;
+			$_SESSION['last-name'] = $lastname;
 			$_SESSION['idcode'] = $idcode;
 			$_SESSION['typePerson'] = $typePerson;
 			$_SESSION['mail'] = $mail;

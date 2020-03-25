@@ -5,7 +5,7 @@
 
 <head>
   <?php include("../../dbConnect.php");
-  $sqltable = "SELECT equipment.id_equipment,equipment.pic , type_equipment.name_typeEquipment , equipment.name_equipment , count(serial_number.name_serial)
+  $sqltable = "SELECT type_equipment.id_typeEquipment,equipment.id_equipment,equipment.pic , type_equipment.name_typeEquipment , equipment.name_equipment , count(serial_number.name_serial)
 , equipment.e_teacher , equipment.e_user , equipment.e_staff , equipment.detail FROM equipment
 INNER JOIN type_equipment ON equipment.id_typeEquipment = type_equipment.id_typeEquipment
 INNER JOIN serial_number ON serial_number.id_equipment = equipment.id_equipment
@@ -46,7 +46,6 @@ GROUP BY name_equipment";
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <?php include "../view/top-bar.php"; ?>
-
   <!-- Main Sidebar Container -->
   <?php include "../view/side-bar.php"; ?>
   <!-- Content Wrapper. Contains page content -->
@@ -195,13 +194,23 @@ GROUP BY name_equipment";
 
                         <!-- ปุ่มเพิ่ม-ลบ-->
                         <td style="text-align:center;">
-                          <a>
-                            <button type="button" class="btn btn-warning  btn-sm" 4 data-toggle="tooltip"
-                                    title="แก้ไขข้อมูล">
+                          <a href="#" class="editEquipment" pic="<?php echo $table[$i + 1]['pic']; ?>"
+                             type_Equipment="<?php echo $table[$i + 1]['name_typeEquipment'] ?>"
+                             name_equipment="<?php echo $table[$i + 1]['name_equipment'] ?>"
+                             count="<?php echo $table[$i + 1]['count(serial_number.name_serial)'] ?>"
+                             e_staff="<?php echo $table[$i + 1]['e_staff'] ?>"
+                             e_teacher="<?php echo $table[$i + 1]['e_teacher'] ?>"
+                             e_user="<?php echo $table[$i + 1]['e_user'] ?>"
+                             detail="<?php echo $table[$i + 1]['detail'] ?>"
+                             e_id ="<?php echo $table[$i + 1]['id_equipment'] ?>"
+                             type_id ="<?php echo $table[$i + 1]['id_typeEquipment'] ?>">
+                            <button type="button" class="btn btn-warning  btn-sm" 4 data-toggle="modal"
+                                    title="แก้ไขข้อมูล" data-target="#modalEdit">
                               <i class="fas fa-edit"></i>
                             </button>
                           </a>
-                          <button type="button" onclick="delfunction('<?php echo $table[$i+1]['id_equipment'] ?>','<?php echo $table[$i+1]['name_equipment'] ?>')"
+                          <button type="button"
+                                  onclick="delfunction('<?php echo $table[$i + 1]['id_equipment'] ?>','<?php echo $table[$i + 1]['name_equipment'] ?>')"
                                   class="btn btn-danger btn-sm btndel" data-toggle="tooltip" title=""
                                   data-original-title="ลบอาจารย์"><i class="far fa-trash-alt"></i>
                           </button>
@@ -304,6 +313,99 @@ GROUP BY name_equipment";
     </div>
     <!-- /.modal-dialog -->
   </div>
+  <!--แก้ไขข้อมูล-->
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">แก้ไขรายละเอียดอุปกรณ์</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="test1"></p>
+
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+
+  <!--โมดัลแก้ไข-->
+  <div id="modalEdit" class="modal fade">
+    <form class="modal-dialog modal-lg" method="post" action='manage.php'>
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#eecc0b">
+          <h4 class="modal-title" style="color:white">แก้ไขรายการอุปกรณ์</h4>
+        </div>
+
+        <div class="modal-body" id="addModalBody">
+          <div class="row mb-4">
+            <div class="col-xl-3 col-12 text-right">
+              <span>หมวดหมู่อุปกรณ์ :</span>
+            </div>
+            <div class="col-xl-8 col-12">
+              <input type="text" class="form-control" id="e_name_typeEquipment" name="e_type" value=""
+                     placeholder="ชื่อหมวดหมู่" maxlength="100">
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-xl-3 col-12 text-right">
+              <span>ชื่ออุปกรณ์:</span>
+            </div>
+            <div class="col-xl-8 col-12">
+              <input type="text" class="form-control" id="e_name_equipment" name="e_name" value=""
+                     placeholder="ชื่ออุปกรณ์" maxlength="100">
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-xl-3 col-12 text-right">
+              <span>จำนวนอุปกรณ์:</span>
+            </div>
+            <div class="col-xl-8 col-12">
+              <input id="e_count" name="count" class="form-control" value="" placeholder="">
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-xl-3 col-12 text-right">
+              <span>สิทธิ์การยืม:</span>
+            </div>
+            <div class="col-xl-8 col-12">
+              <p><input type="checkbox" name="adcheck" id="adcheck" >  (A)ผู้ดูแลระบบ </input></p>
+              <p><input type="checkbox" name="tcheck" id="tcheck">  (T)อาจารย์ </input></p>
+              <p><input type="checkbox" name="ucheck" id="ucheck">  (U)นิสิต </input></p>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-xl-3 col-12 text-right">
+              <span>รายละเอียด:</span>
+            </div>
+            <div class="col-xl-8 col-12">
+              <!-- <input type="text" class="form-control" id="mail" value="ทีวี ตู้เย็น" placeholder="กรุณากรอกรายละเอียด"> -->
+              <textarea id="e_detail" name="e_detail" rows="5" cols="60" class="form-control" value=""
+                        placeholder=""></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" name="edit">บันทึก</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+          <input type="hidden" name="e_id" id="e_id">
+          <input type="hidden" name="type_id" id="e_type_id">
+        </input>
+      </div>
+    </form>
+  </div>
+
   <!-- /.modal -->
   <div class="modal fade" id="modal-xl">
     <div class="modal-dialog modal-xl">
@@ -349,7 +451,7 @@ GROUP BY name_equipment";
 <script src="../../dist/js/demo.js"></script>
 <!-- page script -->
 <script>
-  $(function() {
+  $(function () {
     $("#example1").DataTable();
     $('#example2').DataTable({
       "paging": true,
@@ -360,7 +462,7 @@ GROUP BY name_equipment";
       "autoWidth": false,
     });
   });
-  $(function() {
+  $(function () {
     $("#example3").DataTable();
     $('#example4').DataTable({
       "paging": true,
@@ -407,7 +509,55 @@ GROUP BY name_equipment";
       }
     });
   }
+
+  $(".editEquipment").click(function () {
+    var pic = $(this).attr('pic');
+    var name_type = $(this).attr('type_Equipment');
+    var name_equipment = $(this).attr('name_equipment');
+    var count = $(this).attr('count');
+    var e_staff = $(this).attr('e_staff');
+    var e_teacher = $(this).attr('e_teacher');
+    var e_user = $(this).attr('e_user');
+    var detail = $(this).attr('detail');
+    var e_id = $(this).attr('e_id');
+    var type_id = $(this).attr('type_id');
+
+
+    $('#e_pic').val(pic);
+    $('#e_name_typeEquipment').val(name_type);
+    $('#e_name_equipment').val(name_equipment);
+    $('#e_count').val(count);
+    $('#e_staff').val(e_staff);
+    $('#e_teacher').val(e_teacher);
+    $('#e_detail').val(detail);
+    $('#e_id').val(e_id);
+    $('#e_type_id').val(type_id);
+
+
+    var u = document.getElementById('ucheck');
+    var a = document.getElementById('adcheck');
+    var t = document.getElementById('tcheck');
+
+    if(e_user == true){
+      u.checked = true;
+    }
+    else{
+      u.checked = false;
+    }
+    if(e_staff == true){
+      a.checked = true;
+    }
+    else{
+      a.checked = false;
+    }
+    if(e_teacher == true){
+      t.checked = true;
+    }
+    else{
+      t.checked = false;
+    }
+
+  });
 </script>
 </body>
-
 </html>

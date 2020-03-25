@@ -26,8 +26,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css.map">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css.map">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
@@ -68,9 +67,11 @@
                                     //print_r($request);
                                     if (is_null($numT['teacher'])) {
                                     ?>
-                                    <h3>0 คน</h3>
+
+                                        <h3>0 คน</h3>
                                     <?php } else { ?>
-                                    <h3><?php echo $numT['teacher'] ?> คน</h3>
+
+                                        <h3><?php echo $numT['teacher'] ?> คน</h3>
                                     <?php } ?>
                                     <p>จำนวนอาจารย์ในระบบ</p>
                                 </div>
@@ -85,7 +86,6 @@
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3></h3>
                                     <h3> +1</h3>
                                     <p>เพิ่มรายชื่ออาจารย์</p>
                                 </div>
@@ -121,30 +121,21 @@
                                     </thead>
                                     <tbody>
                                         <?php for ($i = 0; $i < $TableTeacher[0]['numrow']; $i++) { ?>
-                                        <tr role="row" class="odd">
-                                            <td><?php echo $TableTeacher[$i + 1]['Ttitle'] ?>
-                                                <?php echo $TableTeacher[$i + 1]['Tfname'] ?>
-                                                <?php echo  $TableTeacher[$i + 1]['Tlname'] ?> </td>
-                                            <td><?php echo $TableTeacher[$i + 1]['email'] ?></td>
-                                            <td style="text-align:center;">
-                                                <a href="#" class="EditTeacher"
-                                                    idTeacher="<?php echo $TableTeacher[$i + 1]['id_teacher'] ?>"
-                                                    Ttitle="<?php echo $TableTeacher[$i + 1]['Ttitle'] ?>"
-                                                    Tfname="<?php echo $TableTeacher[$i + 1]['Tfname'] ?>"
-                                                    Tlname="<?php echo $TableTeacher[$i + 1]['Tlname'] ?>"
-                                                    email="<?php echo $TableTeacher[$i + 1]['email'] ?>">
-                                                    <button type="button" class="btn btn-warning  btn-sm" 4
-                                                        data-toggle="tooltip" title="แก้ไขข้อมูล">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button>
-                                                </a>
-                                                <button type="button" onclick="delfunction('<?php echo $TableTeacher[$i + 1]['id_teacher'] ?>'
-                                                    ,'<?php echo $TableTeacher[$i + 1]['Tfname'] ?>')"
-                                                    class="btn btn-danger btn-sm btndel" data-toggle="tooltip" title=""
-                                                    data-original-title="ลบอาจารย์"><i
-                                                        class="far fa-trash-alt"></i></button>
-                                            </td>
-                                        </tr>
+                                            <tr role="row" class="odd">
+                                                <td><?php echo $TableTeacher[$i + 1]['Ttitle'] ?>
+                                                    <?php echo $TableTeacher[$i + 1]['Tfname'] ?>
+                                                    <?php echo  $TableTeacher[$i + 1]['Tlname'] ?> </td>
+                                                <td><?php echo $TableTeacher[$i + 1]['email'] ?></td>
+                                                <td style="text-align:center;">
+                                                    <a href="#" class="EditTeacher" idTeacher="<?php echo $TableTeacher[$i + 1]['id_teacher'] ?>" Ttitle="<?php echo $TableTeacher[$i + 1]['Ttitle'] ?>" Tfname="<?php echo $TableTeacher[$i + 1]['Tfname'] ?>" Tlname="<?php echo $TableTeacher[$i + 1]['Tlname'] ?>" email="<?php echo $TableTeacher[$i + 1]['email'] ?>">
+                                                        <button type="button" class="btn btn-warning  btn-sm" 4 data-toggle="tooltip" title="แก้ไขข้อมูล">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
+                                                    </a>
+                                                    <button type="button" onclick="delfunction('<?php echo $TableTeacher[$i + 1]['id_teacher'] ?>'
+                                                    ,'<?php echo $TableTeacher[$i + 1]['Tfname'] ?>')" class="btn btn-danger btn-sm btndel" data-toggle="tooltip" title="" data-original-title="ลบอาจารย์"><i class="far fa-trash-alt"></i></button>
+                                                </td>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                     <tfoot>
@@ -210,8 +201,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
                                     <span class="bmd-form-group">
-                                        <input type="text" class="form-control" id="Tfname" name="Tfname"
-                                            placeholder="กรุณากรอกชื่อ	" maxlength="8"></span>
+                                        <input type="text" class="form-control" id="Tfname" name="Tfname" placeholder="กรุณากรอกชื่อ	" maxlength="8"></span>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -219,8 +209,7 @@
                                     <span>นามสกุล :</span>
                                 </div>
                                 <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                                    <span class="bmd-form-group"><input type="text" class="form-control" id="Tlname"
-                                            name="Tlname" placeholder="กรุณากรอกนามสกุล	" maxlength="8"></span>
+                                    <span class="bmd-form-group"><input type="text" class="form-control" id="Tlname" name="Tlname" placeholder="กรุณากรอกนามสกุล	" maxlength="8"></span>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -228,8 +217,7 @@
                                     <span>อีเมล :</span>
                                 </div>
                                 <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                                    <span class="bmd-form-group"><input type="text" class="form-control" id="email"
-                                            name="email" placeholder="กรุณากรอกอีเมล	" maxlength="8"></span>
+                                    <span class="bmd-form-group"><input type="text" class="form-control" id="email" name="email" placeholder="กรุณากรอกอีเมล	" maxlength="8"></span>
                                 </div>
                             </div>
 
@@ -265,7 +253,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
                                     <span class="bmd-form-group is-filled">
-                                        <select class="browser-default custom-select" id="e_Ttitle" name="e_Ttitle">
+                                        <select class="browser-default custom-select" id="e_Ttitle" name="e_Ttitle" placeholder="กรุณากรอก">
                                             <option>--&gt;กรุณาเลือก&lt;--&lt; /option&gt; </option>
                                             <option value="1">นาย
                                             </option>
@@ -279,8 +267,7 @@
                                     <span>ชื่ออาจารย์ :</span>
                                 </div>
                                 <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                                    <span class="bmd-form-group"><input type="text" class="form-control" id="e_Tfname"
-                                            name="e_Tfname" placeholder="กรุณากรอกชื่อ	" maxlength="8"></span>
+                                    <span class="bmd-form-group"><input type="text" class="form-control" id="e_Tfname" name="e_Tfname" placeholder="กรุณากรอกชื่อ	" maxlength="8"></span>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -288,8 +275,7 @@
                                     <span>นามสกุล :</span>
                                 </div>
                                 <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                                    <span class="bmd-form-group"><input type="text" class="form-control" id="e_Tlname"
-                                            name="e_Tlname" placeholder="กรุณากรอกนามสกุล	" maxlength="8"></span>
+                                    <span class="bmd-form-group"><input type="text" class="form-control" id="e_Tlname" name="e_Tlname" placeholder="กรุณากรอกนามสกุล	" maxlength="8"></span>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -297,8 +283,7 @@
                                     <span>อีเมล :</span>
                                 </div>
                                 <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                                    <span class="bmd-form-group"><input type="text" class="form-control" id="e_email"
-                                            name="e_email" placeholder="กรุณากรอกอีเมล	" maxlength="8"></span>
+                                    <span class="bmd-form-group"><input type="text" class="form-control" id="e_email" name="e_email" placeholder="กรุณากรอกอีเมล	" maxlength="8"></span>
                                 </div>
                             </div>
 
@@ -330,96 +315,96 @@
     <script src="../../dist/js/demo.js"></script>
     <!-- page script -->
     <script>
-    $(function() {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
+        $(function() {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+            });
         });
-    });
     </script>
 </body>
 
 </html>
 
 <script>
-$(document).ready(function() {
+    $(document).ready(function() {
 
-    $('.tt').tooltip({
-        trigger: "hover"
-    });
-    $(".btndel").on('click', function() {
-
-    });
-
-
-});
-
-$(document).ready(function() {
-    console.log("ready!");
-    $("#add").click(function() {
-        $("#modalAdd").modal();
-    });
-});
-$(".EditTeacher").click(function() {
-
-    var idTeacher = $(this).attr('idTeacher');
-    var Ttitle = $(this).attr('Ttitle');
-    var Tfname = $(this).attr('Tfname');
-    var Tlname = $(this).attr('Tlname');
-    var email = $(this).attr('email');
-    alert(idTeacher);
-    // alert(Ttitle);
-    // alert(Tfname);
-    // alert(Tlname);
-
-    $('#e_idTeacher').val(idTeacher);
-    $('#e_Ttitle').val(Ttitle);
-    $('#e_Tfname').val(Tfname);
-    $('#e_Tlname').val(Tlname);
-    $('#e_email').val(email);
-
-    $("#modalEdit").modal();
-});
-
-function delfunction(id, num) {
-
-    swal({
-            title: "คุณแน่ใจที่จะยืนยันการลบใช่มั้ย?",
-            text: "",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonClass: "btn-success",
-            confirmButtonText: "Accept",
-            closeOnConfirm: false
-        },
-        function() {
-            swal("ยืนยันสำเร็จเรียบร้อยแล้ว", {
-                icon: "success",
-                buttons: false
-            });
-            delfunction_1(id, num);
-            setTimeout(function() {
-                location.reload();
-            }, 1500);
+        $('.tt').tooltip({
+            trigger: "hover"
         });
-}
+        $(".btndel").on('click', function() {
 
-function delfunction_1(Tid, num1) {
+        });
 
-    $.ajax({
-        type: "POST",
-        data: {
-            Tid: Tid,
-            action: "delete"
-        },
-        url: "./manage.php",
-        async: false,
-        success: function(result) {}
+
     });
-}
+
+    $(document).ready(function() {
+        console.log("ready!");
+        $("#add").click(function() {
+            $("#modalAdd").modal();
+        });
+    });
+    $(".EditTeacher").click(function() {
+
+        var idTeacher = $(this).attr('idTeacher');
+        var Ttitle = $(this).attr('Ttitle');
+        var Tfname = $(this).attr('Tfname');
+        var Tlname = $(this).attr('Tlname');
+        var email = $(this).attr('email');
+        //alert(idTeacher);
+        // alert(Ttitle);
+        // alert(Tfname);
+        // alert(Tlname);
+
+        $('#e_idTeacher').val(idTeacher);
+        $('#e_Ttitle').val(Ttitle);
+        $('#e_Tfname').val(Tfname);
+        $('#e_Tlname').val(Tlname);
+        $('#e_email').val(email);
+
+        $("#modalEdit").modal();
+    });
+
+    function delfunction(id, num) {
+
+        swal({
+                title: "คุณต้องการลบ",
+                text: "อาจารย์ " + num + " ใช่ไหม",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-success",
+                confirmButtonText: "Accept",
+                closeOnConfirm: false
+            },
+            function() {
+                swal("ยืนยันสำเร็จเรียบร้อยแล้ว", {
+                    icon: "success",
+                    buttons: false
+                });
+                delfunction_1(id, num);
+                setTimeout(function() {
+                    location.reload();
+                }, 1500);
+            });
+    }
+
+    function delfunction_1(Tid, num1) {
+
+        $.ajax({
+            type: "POST",
+            data: {
+                Tid: Tid,
+                action: "delete"
+            },
+            url: "./manage.php",
+            async: false,
+            success: function(result) {}
+        });
+    }
 </script>
