@@ -1,5 +1,5 @@
 <?php ?>
-<nav aria-label="Contacts Page Navigation">
+<nav aria-label="Page Navigation">
   <ul class="pagination justify-content-end m-0">
     <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">previous</a></li>
     <li class="page-item active"><a class="page-link" href="./borrow.php?page=1">1</a></li>
