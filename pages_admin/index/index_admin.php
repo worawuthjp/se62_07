@@ -57,8 +57,6 @@ $faculty = ''; //$_SESSION['faculty'];
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css.map">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
@@ -97,7 +95,7 @@ $faculty = ''; //$_SESSION['faculty'];
                                     $sql_numRequest = "SELECT COUNT(cart.id_cart) as request FROM `cart` WHERE cart.status_accept ='รอยืนยัน' GROUP BY cart.id_cart";
                                     $request = selectDataOne($sql_numRequest);
                                     //print_r($request);
-                                    if (is_null($request['request'])) {
+                                    if (is_null($request['request'])){
                                     ?>
                                     <h3>0 อุปกรณ์</h3>
                                     <?php } else { ?>

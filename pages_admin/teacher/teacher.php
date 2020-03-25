@@ -86,7 +86,6 @@
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3></h3>
                                     <h3> +1</h3>
                                     <p>เพิ่มรายชื่ออาจารย์</p>
                                 </div>
@@ -397,6 +396,7 @@
 
     function delfunction_1(Tid, num1) {
 
+<<<<<<< HEAD
         $.ajax({
             type: "POST",
             data: {
@@ -409,3 +409,17 @@
         });
     }
 </script>
+=======
+    $.ajax({
+        type: "POST",
+        data: {
+            Tid: Tid,
+            action: "delete"
+        },
+        url: "./manage.php",
+        async: false,
+        success: function(result) {}
+    });
+}
+</script>
+>>>>>>> 98c1ddf50e2612509d162dcc563ee0cb65a70d15
