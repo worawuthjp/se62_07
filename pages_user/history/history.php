@@ -45,9 +45,9 @@
                     ประวัติการยืม-คืนอุปกรณ์
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="../../pages_admin/index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li><a href="../../pages_admin/index.php"><i class="fa fa-dashboard"></i> </a></li>
 
-                    <li class="active">Data tables</li>
+                    <li class="active"></li>
                 </ol>
             </section>
 
