@@ -347,17 +347,7 @@ GROUP BY name_equipment";
         <div class="modal-header" style="background-color:#eecc0b">
           <h4 class="modal-title" style="color:white">แก้ไขรายการอุปกรณ์</h4>
         </div>
-
         <div class="modal-body" id="addModalBody">
-          <div class="row mb-4">
-            <div class="col-xl-3 col-12 text-right">
-              <span>หมวดหมู่อุปกรณ์ :</span>
-            </div>
-            <div class="col-xl-8 col-12">
-              <input type="text" class="form-control" id="e_name_typeEquipment" name="e_type" value=""
-                     placeholder="ชื่อหมวดหมู่" maxlength="100">
-            </div>
-          </div>
           <div class="row mb-4">
             <div class="col-xl-3 col-12 text-right">
               <span>หมวดหมู่อุปกรณ์ :</span>
@@ -555,6 +545,7 @@ GROUP BY name_equipment";
     var u = document.getElementById('ucheck');
     var a = document.getElementById('adcheck');
     var t = document.getElementById('tcheck');
+
 
     if (e_user == true) {
       u.checked = true;
