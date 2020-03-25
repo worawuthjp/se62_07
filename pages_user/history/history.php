@@ -30,7 +30,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
-    <div class="wrapper">
+    <div class="wrapper" style="height: 100vh">
         <!-- Navbar -->
         <?php include "../view/top-bar.php"; ?>
 
@@ -38,7 +38,7 @@
         <?php include "../view/side-bar.php"; ?>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper overflow-auto" style="height: 80vh">
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
@@ -109,15 +109,9 @@
                 <!-- /.row -->
             </section>
             <!-- /.content -->
+          <?php include("../view/footer-bar.php"); ?>
         </div>
         <!-- /.content-wrapper -->
-        <?php include("../view/footer-bar.php"); ?>
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 

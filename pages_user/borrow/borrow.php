@@ -19,16 +19,16 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
-<div class="wrapper">
+<div class="wrapper" style="height: 100vh">
   <!-- Navbar -->
-  <?php include "../view/top-bar.php" ;?>
+  <?php include "../view/top-bar.php"; ?>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <?php include "../view/side-bar.php" ;?>
+  <?php include "../view/side-bar.php"; ?>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper overflow-auto" style="height: 80vh">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -52,162 +52,290 @@
 
       <!-- Default box -->
       <div class="card card-solid">
-
-        <div class="card-body pb-0" >
-          <div class="row d-flex align-items-start">
-
-            <!--Show Available Equipment-->
-            <div class="col-12 col-sm-8 col-md-3 d-flex align-items-stretch">
-              <div class="card bg-light">
-                <div class="card-header text-muted border-bottom-0">
-
-                </div>
-                <div class="card-body pt-0">
-                  <div class="col-lg-12 text-center">
-                    <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid col-10">
-                  </div>
-                  <div class="row">
-                    <div class="col-12" >
-                      <br class="mb-1" >
-                      <ul class="ml-md-2 mb-0 fa-ul text-muted">
-                        <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
-                        <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
-                        <li class="m-1"><b>จำนวนคงเหลือ : </b>10 อุปกรณ์</li>
-                        <li class="m-1"><b>สิทธิ์การยืม : </b>A U T O</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-plus-square"></i> เพิ่มลงคำขอ
-                    </a>
-                    <a href="#" class="btn btn-sm btn-primary">
-                      <i class="fas fa-edit"></i> ส่งคำขอยืมอุปกรณ์
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-8 col-md-3 d-flex align-items-stretch">
-              <div class="card bg-light">
-                <div class="card-header text-muted border-bottom-0">
-
-                </div>
-                <div class="card-body pt-0">
-                  <div class="col-lg-12 text-center">
-                    <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid col-10">
-                  </div>
-                  <div class="row">
-                    <div class="col-12" >
-                      <br class="mb-1" >
-                      <ul class="ml-md-2 mb-0 fa-ul text-muted">
-                        <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
-                        <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
-                        <li class="m-1"><b>จำนวนคงเหลือ : </b>10 อุปกรณ์</li>
-                        <li class="m-1"><b>สิทธิ์การยืม : </b>A U T O</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-plus-square"></i> เพิ่มลงคำขอ
-                    </a>
-                    <a href="#" class="btn btn-sm btn-primary">
-                      <i class="fas fa-edit"></i> ส่งคำขอยืมอุปกรณ์
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-8 col-md-3 d-flex align-items-stretch">
-              <div class="card bg-light">
-                <div class="card-header text-muted border-bottom-0">
-
-                </div>
-                <div class="card-body pt-0">
-                  <div class="col-lg-12 text-center">
-                    <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid col-10">
-                  </div>
-                  <div class="row">
-                    <div class="col-12" >
-                      <br class="mb-1" >
-                      <ul class="ml-md-2 mb-0 fa-ul text-muted">
-                        <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
-                        <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
-                        <li class="m-1"><b>จำนวนคงเหลือ : </b>10 อุปกรณ์</li>
-                        <li class="m-1"><b>สิทธิ์การยืม : </b>A U T O</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-plus-square"></i> เพิ่มลงคำขอ
-                    </a>
-                    <a href="#" class="btn btn-sm btn-primary">
-                      <i class="fas fa-edit"></i> ส่งคำขอยืมอุปกรณ์
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-sm-8 col-md-3 d-flex align-items-stretch">
-              <div class="card bg-light">
-                <div class="card-header text-muted border-bottom-0">
-
-                </div>
-                <div class="card-body pt-0">
-                  <div class="col-lg-12 text-center">
-                    <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid col-10">
-                  </div>
-                  <div class="row">
-                    <div class="col-12" >
-                      <br class="mb-1" >
-                      <ul class="ml-md-2 mb-0 fa-ul text-muted">
-                        <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
-                        <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
-                        <li class="m-1"><b>จำนวนคงเหลือ : </b>10 อุปกรณ์</li>
-                        <li class="m-1"><b>สิทธิ์การยืม : </b>A U T O</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm bg-teal">
-                      <i class="fas fa-plus-square"></i> เพิ่มลงคำขอ
-                    </a>
-                    <a href="#" class="btn btn-sm btn-primary">
-                      <i class="fas fa-edit"></i> ส่งคำขอยืมอุปกรณ์
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--End SHOW Available Equipment-->
-
+        <div class="card card-primary">
+          <div class="card-header ">
+            <!-- SEARCH FORM -->
+            <?php include "../view/search-component.php";?>
           </div>
+          <div class="card-body pb-0">
+            <!--Row Show-->
+            <div class="row d-flex align-items-start">
+              <!--Show Available Equipment-->
+              <div class="col-8 col-md-3">
+                <div class="card bg-light">
+                  <div class="card-header text-muted border-bottom-0">
 
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="col-lg-12 text-center">
+                      <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-bordered img-fluid col-7">
+                    </div>
+                    <div class="row">
+                      <div class="col-10">
+                        <br class="mb-1">
+                        <ul class="ml-md-2 mb-0 fa-ul text-muted" id="dataShow">
+                          <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
+                          <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
+                          <li class="m-1"><b>จำนวนคงเหลือ : </b>10 ชิ้น</li>
+                          <li class="m-1"><b>สิทธิ์การยืม : </b>A U T</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="text-right">
+                      <a href="#" class="btn btn-sm bg-teal">
+                        <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
+                      </a>
+                      <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i> ส่งคำขอ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8 col-md-3">
+                <div class="card bg-light">
+                  <div class="card-header text-muted border-bottom-0">
+
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="col-lg-12 text-center">
+                      <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-bordered img-fluid col-7">
+                    </div>
+                    <div class="row">
+                      <div class="col-10">
+                        <br class="mb-1">
+                        <ul class="ml-md-2 mb-0 fa-ul text-muted" id="dataShow">
+                          <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
+                          <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
+                          <li class="m-1"><b>จำนวนคงเหลือ : </b>10 ชิ้น</li>
+                          <li class="m-1"><b>สิทธิ์การยืม : </b>A U T</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="text-right">
+                      <a href="#" class="btn btn-sm bg-teal">
+                        <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
+                      </a>
+                      <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i> ส่งคำขอ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8 col-md-3">
+                <div class="card bg-light">
+                  <div class="card-header text-muted border-bottom-0">
+
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="col-lg-12 text-center">
+                      <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-bordered img-fluid col-7">
+                    </div>
+                    <div class="row">
+                      <div class="col-10">
+                        <br class="mb-1">
+                        <ul class="ml-md-2 mb-0 fa-ul text-muted" id="dataShow">
+                          <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
+                          <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
+                          <li class="m-1"><b>จำนวนคงเหลือ : </b>10 ชิ้น</li>
+                          <li class="m-1"><b>สิทธิ์การยืม : </b>A U T</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="text-right">
+                      <a href="#" class="btn btn-sm bg-teal">
+                        <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
+                      </a>
+                      <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i> ส่งคำขอ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8 col-md-3">
+                <div class="card bg-light">
+                  <div class="card-header text-muted border-bottom-0">
+
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="col-lg-12 text-center">
+                      <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-bordered img-fluid col-7">
+                    </div>
+                    <div class="row">
+                      <div class="col-10">
+                        <br class="mb-1">
+                        <ul class="ml-md-2 mb-0 fa-ul text-muted" id="dataShow">
+                          <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
+                          <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
+                          <li class="m-1"><b>จำนวนคงเหลือ : </b>10 ชิ้น</li>
+                          <li class="m-1"><b>สิทธิ์การยืม : </b>A U T</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="text-right">
+                      <a href="#" class="btn btn-sm bg-teal">
+                        <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
+                      </a>
+                      <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i> ส่งคำขอ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--End SHOW Available Equipment-->
+              <!--Show Available Equipment-->
+              <div class="col-8 col-md-3">
+                <div class="card bg-light">
+                  <div class="card-header text-muted border-bottom-0">
+
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="col-lg-12 text-center">
+                      <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-bordered img-fluid col-7">
+                    </div>
+                    <div class="row">
+                      <div class="col-10">
+                        <br class="mb-1">
+                        <ul class="ml-md-2 mb-0 fa-ul text-muted" id="dataShow">
+                          <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
+                          <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
+                          <li class="m-1"><b>จำนวนคงเหลือ : </b>10 ชิ้น</li>
+                          <li class="m-1"><b>สิทธิ์การยืม : </b>A U T</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="text-right">
+                      <a href="#" class="btn btn-sm bg-teal">
+                        <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
+                      </a>
+                      <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i> ส่งคำขอ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8 col-md-3">
+                <div class="card bg-light">
+                  <div class="card-header text-muted border-bottom-0">
+
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="col-lg-12 text-center">
+                      <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-bordered img-fluid col-7">
+                    </div>
+                    <div class="row">
+                      <div class="col-10">
+                        <br class="mb-1">
+                        <ul class="ml-md-2 mb-0 fa-ul text-muted" id="dataShow">
+                          <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
+                          <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
+                          <li class="m-1"><b>จำนวนคงเหลือ : </b>10 ชิ้น</li>
+                          <li class="m-1"><b>สิทธิ์การยืม : </b>A U T</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="text-right">
+                      <a href="#" class="btn btn-sm bg-teal">
+                        <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
+                      </a>
+                      <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i> ส่งคำขอ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8 col-md-3">
+                <div class="card bg-light">
+                  <div class="card-header text-muted border-bottom-0">
+
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="col-lg-12 text-center">
+                      <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-bordered img-fluid col-7">
+                    </div>
+                    <div class="row">
+                      <div class="col-10">
+                        <br class="mb-1">
+                        <ul class="ml-md-2 mb-0 fa-ul text-muted" id="dataShow">
+                          <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
+                          <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
+                          <li class="m-1"><b>จำนวนคงเหลือ : </b>10 ชิ้น</li>
+                          <li class="m-1"><b>สิทธิ์การยืม : </b>A U T</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="text-right">
+                      <a href="#" class="btn btn-sm bg-teal">
+                        <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
+                      </a>
+                      <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i> ส่งคำขอ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8 col-md-3">
+                <div class="card bg-light">
+                  <div class="card-header text-muted border-bottom-0">
+
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="col-lg-12 text-center">
+                      <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-bordered img-fluid col-7">
+                    </div>
+                    <div class="row">
+                      <div class="col-10">
+                        <br class="mb-1">
+                        <ul class="ml-md-2 mb-0 fa-ul text-muted" id="dataShow">
+                          <li class="m-1"><b>ชื่ออุปกรณ์ : </b> Arduino</li>
+                          <li class="m-1"><b>หมวดหมู่ : </b> IOT</li>
+                          <li class="m-1"><b>จำนวนคงเหลือ : </b>10 ชิ้น</li>
+                          <li class="m-1"><b>สิทธิ์การยืม : </b>A U T</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="text-right">
+                      <a href="#" class="btn btn-sm bg-teal">
+                        <i class="fas fa-plus-square"></i> เพิ่มลงรายการ
+                      </a>
+                      <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i> ส่งคำขอ
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--End SHOW Available Equipment-->
+            </div>
+            <!--End Row Show-->
+          </div>
+          <!-- /.card-body -->
         </div>
-        <!-- /.card-body -->
+
         <div class="card-footer">
-          <nav aria-label="Contacts Page Navigation">
-            <ul class="pagination justify-content-center m-0">
-              <li class="page-item active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">5</a></li>
-              <li class="page-item"><a class="page-link" href="#">6</a></li>
-              <li class="page-item"><a class="page-link" href="#">7</a></li>
-              <li class="page-item"><a class="page-link" href="#">8</a></li>
-            </ul>
-          </nav>
+          <?php include "../view/page-Navigation.php"; ?>
         </div>
         <!-- /.card-footer -->
       </div>
@@ -215,11 +343,10 @@
 
     </section>
     <!-- /.content -->
+    <?php include("../view/footer-bar.php"); ?>
+    <!-- /.content-wrapper -->
   </div>
-  <!-- /.content-wrapper -->
 
-  <?php include "../view/footer-bar.php" ;?>
-  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
@@ -239,22 +366,24 @@
 
 <script>
   $(function () {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
+    $('#example1')
+      .DataTable({
+        'responsive': true,
+        'autoWidth': false
+      })
+    $('#example2')
+      .DataTable({
+        'paging': true,
+        'lengthChange': false,
+        'searching': false,
+        'ordering': true,
+        'info': true,
+        'autoWidth': false,
+        'responsive': true
+      })
+  })
 </script>
-<?php include "../view/script-import.php";?>
+<?php include "../view/script-import.php"; ?>
 </body>
 </html>
 

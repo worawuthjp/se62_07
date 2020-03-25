@@ -1,25 +1,216 @@
-<div class="card ">
-  <div class="col-12 col-sm-8 col-md-3 d-flex align-items-stretch" style="border-style: solid;border-color: blue">
-    <div class="card-body row" style="border-style: solid;">
-
-      <div class="col-lg-12 text-center " style="border-style: solid;border-color: #0f401b">
-        <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid col-10">
+<div class="card">
+  <!--Row Equipment On Cart-->
+  <div class="row">
+    <div class="card-body">
+      <div class="d-flex">
+        <div class="col-3 row align-self-center">
+          <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-thumbnail">
+        </div>
+        <div class="align-items-start ml-2 pt-2">
+          <div class="d-flex ">
+            <h5 class="card-title"><b>ชื่ออุปกรณ์ : </b>Arduino</h5>
+          </div>
+          <div class="d-flex align-items-stretch">
+            <p><b>หมวดหมู่ : </b>อุปกรณ์IOT</p>
+          </div>
+          <div class="row">
+            <label for="numSelect" class="col-4 col-form-label">จำนวน : </label>
+            <div class="col-4">
+              <input class="form-control" type="number" name="numSelect" id="numSelect" value="1">
+            </div>
+          </div>
+        </div>
       </div>
-      <h5>Card title</h5>
-      <p>
-        Some quick example text to build on the card title and make up the bulk of the card's content.
-      </p>
-      <!--<div style="border-style: solid;width: 100%">
-        <h5 >Card title</h5>
-        <p class="col-lg-8">
-          Some quick example text to build on the card title and make up the bulk of the card's
-          content.
-        </p>
-      </div>-->
-
     </div>
-
-    <!--<a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>-->
   </div>
+  <!--End Row Equipment-->
+</div>
+<div class="card">
+  <!--Row Equipment On Cart-->
+  <div class="row">
+    <div class="card-body">
+      <div class="d-flex">
+        <div class="col-3 row align-self-center">
+          <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-thumbnail">
+        </div>
+        <div class="align-items-start ml-2 pt-2">
+          <div class="d-flex ">
+            <h5 class="card-title"><b>ชื่ออุปกรณ์ : </b>Arduino</h5>
+          </div>
+          <div class="d-flex align-items-stretch">
+            <p><b>หมวดหมู่ : </b>อุปกรณ์IOT</p>
+          </div>
+          <div class="row">
+            <label for="numSelect" class="col-4 col-form-label">จำนวน : </label>
+            <div class="col-4">
+              <input class="form-control" type="number" name="numSelect" id="numSelect" value="1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Row Equipment-->
+</div>
+<div class="card">
+  <!--Row Equipment On Cart-->
+  <div class="row">
+    <div class="card-body">
+      <div class="d-flex">
+        <div class="col-3 row align-self-center">
+          <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-thumbnail">
+        </div>
+        <div class="align-items-start ml-2 pt-2">
+          <div class="d-flex ">
+            <h5 class="card-title"><b>ชื่ออุปกรณ์ : </b>Arduino</h5>
+          </div>
+          <div class="d-flex align-items-stretch">
+            <p><b>หมวดหมู่ : </b>อุปกรณ์IOT</p>
+          </div>
+          <div class="row">
+            <label for="numSelect" class="col-4 col-form-label">จำนวน : </label>
+            <div class="col-4">
+              <input class="form-control" type="number" name="numSelect" id="numSelect" value="1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Row Equipment-->
+</div>
+<div class="card">
+  <!--Row Equipment On Cart-->
+  <div class="row">
+    <div class="card-body">
+      <div class="d-flex">
+        <div class="col-3 row align-self-center">
+          <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-thumbnail">
+        </div>
+        <div class="align-items-start ml-2 pt-2">
+          <div class="d-flex ">
+            <h5 class="card-title"><b>ชื่ออุปกรณ์ : </b>Arduino</h5>
+          </div>
+          <div class="d-flex align-items-stretch">
+            <p><b>หมวดหมู่ : </b>อุปกรณ์IOT</p>
+          </div>
+          <div class="row">
+            <label for="numSelect" class="col-4 col-form-label">จำนวน : </label>
+            <div class="col-4">
+              <input class="form-control" type="number" name="numSelect" id="numSelect" value="1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Row Equipment-->
+</div>
+<div class="card">
+  <!--Row Equipment On Cart-->
+  <div class="row">
+    <div class="card-body">
+      <div class="d-flex">
+        <div class="col-3 row align-self-center">
+          <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-thumbnail">
+        </div>
+        <div class="align-items-start ml-2 pt-2">
+          <div class="d-flex ">
+            <h5 class="card-title"><b>ชื่ออุปกรณ์ : </b>Arduino</h5>
+          </div>
+          <div class="d-flex align-items-stretch">
+            <p><b>หมวดหมู่ : </b>อุปกรณ์IOT</p>
+          </div>
+          <div class="row">
+            <label for="numSelect" class="col-4 col-form-label">จำนวน : </label>
+            <div class="col-4">
+              <input class="form-control" type="number" name="numSelect" id="numSelect" value="1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Row Equipment-->
+</div>
+<div class="card">
+  <!--Row Equipment On Cart-->
+  <div class="row">
+    <div class="card-body">
+      <div class="d-flex">
+        <div class="col-3 row align-self-center">
+          <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-thumbnail">
+        </div>
+        <div class="align-items-start ml-2 pt-2">
+          <div class="d-flex ">
+            <h5 class="card-title"><b>ชื่ออุปกรณ์ : </b>Arduino</h5>
+          </div>
+          <div class="d-flex align-items-stretch">
+            <p><b>หมวดหมู่ : </b>อุปกรณ์IOT</p>
+          </div>
+          <div class="row">
+            <label for="numSelect" class="col-4 col-form-label">จำนวน : </label>
+            <div class="col-4">
+              <input class="form-control" type="number" name="numSelect" id="numSelect" value="1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Row Equipment-->
+</div>
+<div class="card">
+  <!--Row Equipment On Cart-->
+  <div class="row">
+    <div class="card-body">
+      <div class="d-flex">
+        <div class="col-3 row align-self-center">
+          <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-thumbnail">
+        </div>
+        <div class="align-items-start ml-2 pt-2">
+          <div class="d-flex ">
+            <h5 class="card-title"><b>ชื่ออุปกรณ์ : </b>Arduino</h5>
+          </div>
+          <div class="d-flex align-items-stretch">
+            <p><b>หมวดหมู่ : </b>อุปกรณ์IOT</p>
+          </div>
+          <div class="row">
+            <label for="numSelect" class="col-4 col-form-label">จำนวน : </label>
+            <div class="col-4">
+              <input class="form-control" type="number" name="numSelect" id="numSelect" value="1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Row Equipment-->
+</div>
+<div class="card">
+  <!--Row Equipment On Cart-->
+  <div class="row">
+    <div class="card-body">
+      <div class="d-flex">
+        <div class="col-3 row align-self-center">
+          <img src="../../dist/img/user1-128x128.jpg" alt="" class="img-thumbnail">
+        </div>
+        <div class="align-items-start ml-2 pt-2">
+          <div class="d-flex ">
+            <h5 class="card-title"><b>ชื่ออุปกรณ์ : </b>Arduino</h5>
+          </div>
+          <div class="d-flex align-items-stretch">
+            <p><b>หมวดหมู่ : </b>อุปกรณ์IOT</p>
+          </div>
+          <div class="row">
+            <label for="numSelect" class="col-4 col-form-label">จำนวน : </label>
+            <div class="col-4">
+              <input class="form-control" type="number" name="numSelect" id="numSelect" value="1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Row Equipment-->
 </div>

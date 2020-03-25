@@ -123,7 +123,7 @@
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="modal" href="#" data-target="#cartModal">
         <ion-icon name="cart-outline"
-                  style="font-size: 22px;--ionicon-stroke-width: 50px;height: 22px;margin-top: 1px;">
+                  style="font-size: 22px;--ionicon-stroke-width: 50px;margin-top: 1px;">
         </ion-icon>
         <span class="badge badge-primary navbar-badge col-3">3</span>
       </a>
@@ -131,7 +131,7 @@
     <!--End Card Dropdown Menu-->
 
     <li class="nav-item">
-      <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+      <a class="nav-link" data-slide="true" href="#" role="button">
         <i class="fas fa-th-large"></i>
       </a>
     </li>
