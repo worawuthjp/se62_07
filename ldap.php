@@ -64,7 +64,7 @@ function user_authen($username, $ldappass, $filter1 = "")
 <?php
 if (isset($_POST['username2'])) {
 	$info = (user_authen($username, $password, $_POST['username'])); // id
-	user_authen("b6020500381", "Phanu24036##", "b6020500381");
+	//user_authen("b6020500381", "Phanu24036##", "b6020500381");
 	if ($info[0]["type-person"][0] == "3") {
 		//นิสิต
 		echo "uid=" . $info[0]["uid"][0] . "</br>";
@@ -189,15 +189,14 @@ if ($username == "" || $password == "") {
 			addinsertData($sqlAddUser);
 			if ($getUser['isAdmin'] == 0) {
 				if ($info[0]["type-person"][0] == 1) {
-
-					header("Location: ./SE_Teacher/index.php");
+					header("Location: ./pages_teacher/index.php");
 				} else {
 
-					header("Location: ./SE_User/index.php");
+					header("Location: ./pages_user/index.php");
 				}
 			} else {
 
-				header("Location: ./SE_admin/index.php");
+				header("Location: ./pages_admin/index.php");
 			}
 		} else {
 			$thaiprename = $info[0]["thaiprename"][0];
@@ -226,14 +225,14 @@ if ($username == "" || $password == "") {
 			if ($getUser['isAdmin'] == 0) {
 				if ($info[0]["type-person"][0] == 1) {
 
-					header("Location: ./SE_Teacher/index.php");
+					header("Location:./pages_teacher/index/index_admin.php");
 				} else {
 
-					header("Location: ./SE_User/index.php");
+					header("Location: ./pages_user/index_admin.php");
 				}
 			} else {
 
-				header("Location: ./SE_admin/index.php");
+				header("Location: ./pages_admin/index/index_admin.php");
 			}
 		}
 	}

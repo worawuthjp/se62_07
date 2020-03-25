@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <?php session_start();
-$thaiprename = ''; //$_SESSION[1]['thaiprename'];
-$firstname = ''; //$_SESSION['first-name'];
-$lastname = ''; //$_SESSION['last-name'];
-$idcode = ''; //$_SESSION['idcode'];
-$typePerson = ''; //$_SESSION['typePerson'];
-$mail = ''; //$_SESSION['mail'];
-$faculty = ''; //$_SESSION['faculty'];
-//echo ("555555555555");
+$thaiprename = $_SESSION[1]['thaiprename'];
+$firstname = $_SESSION['first-name'];
+$lastname = $_SESSION['last-name'];
+$idcode = $_SESSION['idcode'];
+$typePerson = $_SESSION['typePerson'];
+$mail =  $_SESSION['mail'];
+$faculty = $_SESSION['faculty'];
+echo ($thaiprename + "  ");
+echo ($firstname + "  ");
+echo ($lastname + "  ");
+echo ($idcode + "  ");
+echo ($typePerson + "  ");
+echo ($mail + "  ");
+echo ($faculty + "  ");
+
+
 ?>
 
 <head>
