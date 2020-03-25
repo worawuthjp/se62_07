@@ -181,7 +181,12 @@ if ($username == "" || $password == "") {
 			$_SESSION['mail'] = $mail;
 			$_SESSION['faculty'] = $faculty;
 			echo $_SESSION['thaiprename'];
-
+			echo $_SESSION['first-name'];
+			echo $_SESSION['last-name'];
+			echo $_SESSION['idcode'];
+			echo $_SESSION['typePerson'];
+			echo $_SESSION['mail'];
+			echo $_SESSION['faculty'];
 
 			$sqlAddUser = "INSERT INTO user (`id_user`,`title`,`fname`,`lname`,`idKU`,`statusUser`,`email`,faculty,`isAdmin`) 
 			VALUES ( NULL,'$thaiprename','$firstname','$lastname','$idcode','$typePerson','$mail','$faculty','0' )";
@@ -208,12 +213,18 @@ if ($username == "" || $password == "") {
 			$faculty = $info[0]["faculty"][0];
 			$_SESSION['thaiprename'] = $thaiprename;
 			$_SESSION['first-name'] = $firstname;
-			$_SESSION['last-name'] = $thaiplastnamerename;
+			$_SESSION['last-name'] = $lastname;
 			$_SESSION['idcode'] = $idcode;
 			$_SESSION['typePerson'] = $typePerson;
 			$_SESSION['mail'] = $mail;
 			$_SESSION['faculty'] = $faculty;
-			echo $firstname;
+			echo $_SESSION['thaiprename'];
+			echo $_SESSION['first-name'];
+			echo $_SESSION['last-name'];
+			echo $_SESSION['idcode'];
+			echo $_SESSION['typePerson'];
+			echo $_SESSION['mail'];
+			echo $_SESSION['faculty'];
 
 			if (isset($_SESSION['thaiprename'])) {
 				echo "Have SESSION";
