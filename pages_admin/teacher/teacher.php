@@ -70,7 +70,7 @@
 
                                         <h3>0 คน</h3>
                                     <?php } else { ?>
-                                        <h3> </h3>
+
                                         <h3><?php echo $numT['teacher'] ?> คน</h3>
                                     <?php } ?>
                                     <p>จำนวนอาจารย์ในระบบ</p>
@@ -357,7 +357,7 @@
         var Tfname = $(this).attr('Tfname');
         var Tlname = $(this).attr('Tlname');
         var email = $(this).attr('email');
-        alert(idTeacher);
+        //alert(idTeacher);
         // alert(Ttitle);
         // alert(Tfname);
         // alert(Tlname);
@@ -396,7 +396,6 @@
 
     function delfunction_1(Tid, num1) {
 
-<<<<<<< HEAD
         $.ajax({
             type: "POST",
             data: {
@@ -409,17 +408,3 @@
         });
     }
 </script>
-=======
-    $.ajax({
-        type: "POST",
-        data: {
-            Tid: Tid,
-            action: "delete"
-        },
-        url: "./manage.php",
-        async: false,
-        success: function(result) {}
-    });
-}
-</script>
->>>>>>> 98c1ddf50e2612509d162dcc563ee0cb65a70d15
