@@ -33,7 +33,7 @@ if (isset($_POST['edit'])) {
   $tcheck = $_POST['tcheck'];
   $ucheck = $_POST['ucheck'];
   $e_id = $_POST['e_id'];
-  $type_id = $_POST['type_id'];
+  $e_typeEquipment = $_POST['id_typeEquipment'];
   if (isset($tcheck)) {
     $tcheck = 1;
   } else {
@@ -50,9 +50,10 @@ if (isset($_POST['edit'])) {
     $adcheck = 0;
   }
 
-  $sqlroom = "UPDATE `equipment` SET `id_equipment` = '$e_id', `name_equipment` = '$e_name', `e_teacher` = '$tcheck', `e_user` = '$ucheck', `e_staff` = '$adcheck', `id_typeEquipment` = '$type_id', `detail` = '$e_detail' WHERE `equipment`.`id_equipment` = $e_id";
+  $sqlroom = "UPDATE `equipment` SET `id_equipment` = '$e_id', `name_equipment` = '$e_name', `e_teacher` = '$tcheck', `e_user` = '$ucheck', `e_staff` = '$adcheck', `id_typeEquipment` = '$e_typeEquipment', `detail` = '$e_detail' WHERE `equipment`.`id_equipment` = $e_id";
   echo $sqlroom;
   updateData($sqlroom);
+
 
 
   header("location:./name_equipment.php");

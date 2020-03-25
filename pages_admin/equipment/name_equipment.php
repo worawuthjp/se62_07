@@ -13,6 +13,9 @@ WHERE equipment.isDelete = 0
 GROUP BY name_equipment";
   $table = selectData($sqltable);
 
+  $sqltype = "SELECT type_equipment.id_typeEquipment,type_equipment.name_typeEquipment FROM type_equipment";
+  $type = selectData($sqltype);
+
 
   $sqlnumber = "SELECT COUNT(serial_number.id_serial) FROM serial_number";
   $number = selectDataOne($sqlnumber);
@@ -202,8 +205,8 @@ GROUP BY name_equipment";
                              e_teacher="<?php echo $table[$i + 1]['e_teacher'] ?>"
                              e_user="<?php echo $table[$i + 1]['e_user'] ?>"
                              detail="<?php echo $table[$i + 1]['detail'] ?>"
-                             e_id ="<?php echo $table[$i + 1]['id_equipment'] ?>"
-                             type_id ="<?php echo $table[$i + 1]['id_typeEquipment'] ?>">
+                             e_id="<?php echo $table[$i + 1]['id_equipment'] ?>"
+                             type_id="<?php echo $table[$i + 1]['id_typeEquipment'] ?>">
                             <button type="button" class="btn btn-warning  btn-sm" 4 data-toggle="modal"
                                     title="แก้ไขข้อมูล" data-target="#modalEdit">
                               <i class="fas fa-edit"></i>
@@ -357,6 +360,21 @@ GROUP BY name_equipment";
           </div>
           <div class="row mb-4">
             <div class="col-xl-3 col-12 text-right">
+              <span>หมวดหมู่อุปกรณ์ :</span>
+            </div>
+            <div class="col-xl-8 col-12" >
+              <select class="form-control" name="id_typeEquipment">
+                <?php
+                for ($i = 0; $i < $type[0]['numrow']; $i++) {
+                  echo '<option value="'.$type[$i+1]['id_typeEquipment'].'">'.$type[$i + 1]['name_typeEquipment'].'</option>';
+                }
+                ?>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-xl-3 col-12 text-right">
               <span>ชื่ออุปกรณ์:</span>
             </div>
             <div class="col-xl-8 col-12">
@@ -379,9 +397,9 @@ GROUP BY name_equipment";
               <span>สิทธิ์การยืม:</span>
             </div>
             <div class="col-xl-8 col-12">
-              <p><input type="checkbox" name="adcheck" id="adcheck" >  (A)ผู้ดูแลระบบ </input></p>
-              <p><input type="checkbox" name="tcheck" id="tcheck">  (T)อาจารย์ </input></p>
-              <p><input type="checkbox" name="ucheck" id="ucheck">  (U)นิสิต </input></p>
+              <p><input type="checkbox" name="adcheck" id="adcheck"> (A)ผู้ดูแลระบบ </input></p>
+              <p><input type="checkbox" name="tcheck" id="tcheck"> (T)อาจารย์ </input></p>
+              <p><input type="checkbox" name="ucheck" id="ucheck"> (U)นิสิต </input></p>
             </div>
           </div>
 
@@ -400,9 +418,8 @@ GROUP BY name_equipment";
           <button type="submit" class="btn btn-success" name="edit">บันทึก</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
           <input type="hidden" name="e_id" id="e_id">
-          <input type="hidden" name="type_id" id="e_type_id">
-        </input>
-      </div>
+          </input>
+        </div>
     </form>
   </div>
 
@@ -520,7 +537,8 @@ GROUP BY name_equipment";
     var e_user = $(this).attr('e_user');
     var detail = $(this).attr('detail');
     var e_id = $(this).attr('e_id');
-    var type_id = $(this).attr('type_id');
+    var typeEquipment = $(this).attr('typeEquipment');
+
 
 
     $('#e_pic').val(pic);
@@ -531,29 +549,26 @@ GROUP BY name_equipment";
     $('#e_teacher').val(e_teacher);
     $('#e_detail').val(detail);
     $('#e_id').val(e_id);
-    $('#e_type_id').val(type_id);
+    $('#e_typeEquipment').val(typeEquipment);
 
 
     var u = document.getElementById('ucheck');
     var a = document.getElementById('adcheck');
     var t = document.getElementById('tcheck');
 
-    if(e_user == true){
+    if (e_user == true) {
       u.checked = true;
-    }
-    else{
+    } else {
       u.checked = false;
     }
-    if(e_staff == true){
+    if (e_staff == true) {
       a.checked = true;
-    }
-    else{
+    } else {
       a.checked = false;
     }
-    if(e_teacher == true){
+    if (e_teacher == true) {
       t.checked = true;
-    }
-    else{
+    } else {
       t.checked = false;
     }
 
