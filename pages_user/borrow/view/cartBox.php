@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card cart">
   <!--Row Equipment On Cart-->
   <div class="row">
     <div class="card-body">

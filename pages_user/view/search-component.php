@@ -7,28 +7,32 @@
               </span>
   <span class="pl-1 pb-0 align-self-center">
                 <ion-icon name="search-sharp"
-                          style="height: 35px;font-size: 26px;--ionicon-stroke-width: 30px;color: grey ">
-
+                          style="height: 35px;font-size: 26px;--ionicon-stroke-width: 30px;color: darkgrey ">
                 </ion-icon>
               </span>
 </div>
 
 <script>
   function searchFunction() {
-    var input,filter,ul,li,i,txtVal,div;
+    var input,filter,i,txtVal,div,count = 0;
     input = document.getElementById("inputText");
     filter = input.value.toUpperCase();
-    ul = document.getElementsByName("dataShow");
-    li = ul.getElementsByTagName("li");
-    div =
-    for(i=0;i<li.length;i++){
-      txtVal = li[i].textContent || [i].innerText;
+    div = document.getElementsByClassName("dataShow");
+
+    for(i=0;i<div.length;i++){
+      txtVal = div[i].textContent || div[i].innerText;
+      count++;
       if(txtVal.toUpperCase().indexOf(filter) > -1){
-        li[i].style.display = "";
+        div[i].style.display = "";
       }
       else{
-        li[i].style.display = "none";
+        div[i].style.display = "none";
+        count = 0;
       }
+    }
+    if(count == 0){
+      div = document.getElementsByClassName("boxShow");
+      div.style.display = "none";
     }
 
   }

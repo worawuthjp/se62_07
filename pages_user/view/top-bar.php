@@ -1,3 +1,16 @@
+<?php
+if(isset($_SESSION['num'])){
+  $num = $_SESSION['num'];
+}
+else{
+  $num = 0;
+}
+
+if(isset($_POST['numCart'])){
+  $num = $_POST['numCart'];
+  echo $num;
+}
+?>
 <nav class="main-header navbar navbar-expand navbar-dark" style="background-color: #003300">
   <!-- Left navbar links -->
   <ul class="navbar-nav">
@@ -35,7 +48,7 @@
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
         <i class="far fa-comments"></i>
-        <span class="badge badge-danger navbar-badge">3</span>
+        <span class="badge badge-danger navbar-badge"></span>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <a href="#" class="dropdown-item">
@@ -121,11 +134,11 @@
     <!--END Notification Dropdown Menu-->
     <!--Card Dropdown Menu-->
     <li class="nav-item dropdown">
-      <a class="nav-link" data-toggle="modal" href="#" data-target="#cartModal">
+      <a class="nav-link" data-toggle="modal" href="#" data-target="#cartModal" id="cart">
         <ion-icon name="cart-outline"
                   style="font-size: 22px;--ionicon-stroke-width: 50px;margin-top: 1px;">
         </ion-icon>
-        <span class="badge badge-primary navbar-badge col-3">3</span>
+        <span class="badge badge-primary navbar-badge col-3 numCart" ><?php echo $num?></span>
       </a>
     </li>
     <!--End Card Dropdown Menu-->
@@ -138,4 +151,4 @@
   </ul>
 </nav>
 
-<?php include "../view/modal-Form.php";?>
+<?php include "../view/modal-Form.php"; ?>
